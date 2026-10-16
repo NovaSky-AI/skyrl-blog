@@ -147,7 +147,7 @@ For the MXFP8 RL run, we made the following modifications (full config [here](ht
 
 | Config | Values |
 | :---- | :---- |
-| **Megatron** | `fp8=e4me3`, `fp8_recipe=mxfp8`, `fp8_amax_compute_algo=most_recent` |
+| **Megatron** | `fp8=e4m3`, `fp8_recipe=mxfp8`, `fp8_amax_compute_algo=most_recent` |
 | **vLLM** | `fp8_weight_sync_mode=mxfp8` |
 | **Algorithm** | Geometric sequence masking for off-policy correction |
 
