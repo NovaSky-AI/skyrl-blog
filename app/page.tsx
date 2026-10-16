@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { ArrowUpRight, GitBranch, Moon, Search, Sun } from 'lucide-react'
 
 const posts = [
+  { date: 'Release 21', read: 'Reflection + SkyRL', title: 'Day 0 Support for Beam in SkyRL', excerpt: 'LoRA, BF16 full fine-tuning, and MXFP8 RL for Reflection’s 501B Beam model on day 0, plus the systems work that made it efficient.', tag: 'RELEASE', publishedAt: '2026-10-16', href: '/blog/day-0-beam' },
   { date: 'Release 18', read: 'Mercor + SkyRL', title: 'Training frontier knowledge work agents: A 397B RL training guide with SkyRL', excerpt: 'A step-by-step guide to post-training Qwen3.5-397B-A17B with SkyRL, including the infrastructure, systems tuning, and lessons behind the hero run.', tag: 'CASE STUDY', publishedAt: '2026-09-01', href: 'https://mercor.com/blog/training-frontier-knowledge-work-agents-a-397b-rl-training-guide-with-skyrl' },
   { date: 'Release 20', read: 'SkyRL v0.4.0', title: 'SkyRL v0.4.0: Improving SkyRL for large scale post-training', excerpt: 'New model support, more stable RL, faster routing replay, efficient weight transfer, and a stronger path to production-scale experiments.', tag: 'RELEASE', href: '/blog/skyrl-v0-4-0' },
   { date: 'Release 01', read: 'SkyRL v0', title: 'SkyRL v0: Train real-world long-horizon agents via reinforcement learning', excerpt: 'Introducing SkyRL v0, an open framework for training capable long-horizon agents with reinforcement learning.', tag: 'RESEARCH', href: 'https://novasky-ai.notion.site/skyrl-v0' },
@@ -73,13 +74,13 @@ export default function Page() {
         </section>
 
         <section aria-labelledby="featured-heading" className="mb-16">
-          <a href="https://mercor.com/blog/training-frontier-knowledge-work-agents-a-397b-rl-training-guide-with-skyrl" target="_blank" rel="noreferrer" className={dark ? 'group grid overflow-hidden rounded-2xl border border-white/10 bg-[#191d25] md:grid-cols-[42%_58%]' : 'group grid overflow-hidden rounded-2xl border border-[#e2e5e9] bg-[#fbfcfe] md:grid-cols-[42%_58%]'}>
-            <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-white p-5 md:min-h-[320px] md:p-8"><img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VnhyMhAhe1QcCtbdxsTVGF0zWmWTVT.png" alt="SkyRL architecture diagram showing the VeRL backend, tools, environment runtime, and sandbox server" className="h-full w-full scale-[1.08] object-contain transition duration-500 group-hover:scale-[1.1]" /></div>
+          <a href="/blog/day-0-beam" className={dark ? 'group grid overflow-hidden rounded-2xl border border-white/10 bg-[#191d25] md:grid-cols-[42%_58%]' : 'group grid overflow-hidden rounded-2xl border border-[#e2e5e9] bg-[#fbfcfe] md:grid-cols-[42%_58%]'}>
+            <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-white p-5 md:min-h-[320px] md:p-8"><img src="/blog/day-0-beam/hero.png" alt="SkyRL × vLLM × Reflection: Day 0 Support for Beam" className="h-full w-full scale-[1.08] object-contain transition duration-500 group-hover:scale-[1.1]" /></div>
             <div className="flex flex-col justify-center p-8 md:p-12">
-              <p className="mb-4 text-[11px] font-bold tracking-[0.18em] text-[#1769ff]">FEATURED · CASE STUDY</p>
-              <h2 id="featured-heading" className="max-w-[520px] text-[28px] font-semibold leading-[1.12] tracking-[-0.04em] md:text-[34px]">Training frontier knowledge work agents: A 397B RL training guide with SkyRL</h2>
-              <p className="mt-5 text-[14px] leading-6 text-[#667085]">A step-by-step guide to post-training Qwen3.5-397B-A17B with SkyRL, including the infrastructure, systems tuning, and lessons behind the hero run.</p>
-              <div className="mt-7 flex items-center gap-3 text-[12px] font-medium text-[#8a93a2]"><time>September 2026</time><span>·</span><span>Mercor + SkyRL</span><ArrowUpRight size={16} className="ml-auto text-[#1769ff] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
+              <p className="mb-4 text-[11px] font-bold tracking-[0.18em] text-[#1769ff]">FEATURED · RELEASE</p>
+              <h2 id="featured-heading" className="max-w-[520px] text-[28px] font-semibold leading-[1.12] tracking-[-0.04em] md:text-[34px]">Day 0 Support for Beam in SkyRL</h2>
+              <p className="mt-5 text-[14px] leading-6 text-[#667085]">LoRA, BF16 full fine-tuning, and MXFP8 RL for Reflection’s 501B Beam model on day 0, plus the systems work that made it efficient.</p>
+              <div className="mt-7 flex items-center gap-3 text-[12px] font-medium text-[#8a93a2]"><time>October 2026</time><span>·</span><span>Reflection + SkyRL</span><ArrowUpRight size={16} className="ml-auto text-[#1769ff] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
             </div>
           </a>
         </section>

@@ -126,7 +126,7 @@ We provide the exact training configurations used for the LoRA and full fine-tun
 | **Parallelism layout** | Megatron TP4/EP8/PP2, vLLM TP8PP2 (2 replicas), colocated training |
 | **Algorithm** | 64 prompts per batch, 8 samples per prompt.</br>GRPO, clip-higher.</br> 2 mini-batches per batch.</br>LR 1e-5.</br>Rollout Routing Replay (R3) enabled.</br> Overlong buffer penalty following DAPO. </br> Dynamic sampling off. |
 | **LoRA** | rank 64, alpha 64, LoRA on all linear layers |
-| **Generation** | 1,024 max prompt length, 8,192 max response length,</br>temperature 1.0, `top_p` 1.0, reasoning effort `minimal` |
+| **Generation** | 2,048 max prompt length, 8,192 max response length,</br>temperature 1.0, `top_p` 1.0, reasoning effort `minimal` |
 | **Evaluation dataset** | AIME25 |
 
 ### Full fine-tuning configuration {#full-fine-tuning-configuration}
