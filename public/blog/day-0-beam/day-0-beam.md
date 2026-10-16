@@ -51,7 +51,7 @@ We validated RL training of Beam with SkyRL, with the official vLLM branch for B
 
 Training for LoRA and full fine-tuning are at parity for this simple reasoning task run over 50 training steps (100 optimizer updates). Both training curves have Rollout Routing Replay (R3) enabled. Average response length on the training dataset gradually increases from \~950 tokens to 1400 tokens. These are short training runs for initial validation of model support, finishing in 5 hours.
 
-One interesting property of the Beam model is its terse generations and reasoning efficiency. The model has a compressed chain of thought, which keeps decode costs low. For example, at reasoning effort `minimal,`Beam averages just \~ 1.4K tokens on AIME25.
+One interesting property of the Beam model is its terse generations and reasoning efficiency. The model has a compressed chain of thought, which keeps decode costs low. For example, at reasoning effort `minimal`, Beam averages just \~ 1.4K tokens on AIME25.
 
 One reasoning snippet on an AIME25 problem with reasoning effort `minimal`:
 
@@ -94,7 +94,7 @@ We made three changes:
 
 [**Support optimizer offload to disk**](https://github.com/NovaSky-AI/SkyRL/pull/2490): To support full fine-tuning on 8 B200 nodes, we initially offloaded the optimizer to CPU with Megatron's hybrid CPU optimizer. However, this wasn't enough: the total state is about \~18 Bytes per param of host RAM (12 B for the fp32 master weights and Adam moments, 4 B for the fp32 gradient copy held by Megatron, and 2 B for the offloaded bf16 weights), i.e. \~9 TB in total. With additional memory usage during colocated training, this exhausted host RAM (\~ 13.5 TB across 8 nodes) at the first optimizer step. 
 
-Inspired by [Miles](https://arxiv.org/abs/2609.08368), we enabled optimizer offload to disk to avoid this: the optimizer state lives in per-bucket files on node-local NVMe (\~0.6-0.7 TB per node) and is stepped on the GPU one bucket at a time. Each streamed optimizer step takes \~25-50 s per rank, while host RAM usage dropped from \~13.5 TB to \<= 3.2 TB (\<= 0.4 TB per node). For comparison, the optimizer step with CPU offloading takes \~35s for similar model sizes (300B-500B). Thus, offloading to disk enables a \~4x reduction and can be as fast as CPU offloading.  
+Inspired by [Miles](https://arxiv.org/abs/2609.08368), we enabled optimizer offload to disk. Each rank stores its optimizer state in a file on node-local NVMe (\~0.6-0.7 TB per node) and streams it through the GPU one chunk at a time. Each streamed optimizer step takes \~25-50 s per rank, while host RAM usage dropped from \~13.5 TB to \<= 3.2 TB (\<= 0.4 TB per node). For comparison, the optimizer step with CPU offloading takes \~35s for similar model sizes (300B-500B). Thus, offloading to disk enables a \~4x reduction and can be as fast as CPU offloading.  
 
 ![](./fig2-optimizer-offload-disk.png)
 
