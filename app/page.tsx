@@ -74,9 +74,9 @@ export default function Page() {
         </section>
 
         <section aria-labelledby="featured-heading" className="mb-16">
-          <a href="/blog/day-0-beam" className={dark ? 'group grid overflow-hidden rounded-2xl border border-white/10 bg-[#191d25] md:grid-cols-[42%_58%]' : 'group grid overflow-hidden rounded-2xl border border-[#e2e5e9] bg-[#fbfcfe] md:grid-cols-[42%_58%]'}>
-            <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden bg-white p-5 md:min-h-[320px] md:p-8"><img src="/blog/day-0-beam/hero.png" alt="SkyRL × vLLM × Reflection: Day 0 Support for Beam" className="h-full w-full scale-[1.08] object-contain transition duration-500 group-hover:scale-[1.1]" /></div>
-            <div className="flex flex-col justify-center p-8 md:p-12">
+          <a href="/blog/day-0-beam" className={dark ? 'group block overflow-hidden rounded-2xl border border-white/10 bg-[#191d25]' : 'group block overflow-hidden rounded-2xl border border-[#e2e5e9] bg-[#fbfcfe]'}>
+            <div className="overflow-hidden border-b border-[#e2e5e9] bg-white px-4 py-2 sm:px-10 sm:py-4"><img src="/blog/day-0-beam/hero.png" alt="SkyRL × vLLM × Reflection: Day 0 Support for Beam" className="mx-auto w-full max-w-[960px] transition duration-500 group-hover:scale-[1.02]" /></div>
+            <div className="flex flex-col justify-center p-8 md:px-12 md:py-10">
               <p className="mb-4 text-[11px] font-bold tracking-[0.18em] text-[#1769ff]">FEATURED · RELEASE</p>
               <h2 id="featured-heading" className="max-w-[520px] text-[28px] font-semibold leading-[1.12] tracking-[-0.04em] md:text-[34px]">Day 0 Support for Beam in SkyRL</h2>
               <p className="mt-5 text-[14px] leading-6 text-[#667085]">LoRA, BF16 full fine-tuning, and MXFP8 RL for Reflection’s 501B Beam model on day 0, plus the systems work that made it efficient.</p>
