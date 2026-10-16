@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import { ArrowUpRight, GitBranch, Moon, Search, Sun } from 'lucide-react'
 
 const posts = [
-  { read: 'Reflection + SkyRL', title: 'Day 0 Support for Beam in SkyRL', excerpt: 'The first Day 0 RL effort for SkyRL. We added support for LoRA, BF16 full fine-tuning and MXFP8 RL for Beam, and also upgraded SkyRL for efficient RL at 500B scale.', tag: 'RELEASE', publishedAt: '2026-10-16', href: '/blog/day-0-beam' },
+  { read: 'Reflection + SkyRL', title: 'Day 0 Support for Beam in SkyRL', excerpt: 'Day 0 RL support for Beam. LoRA, BF16 full fine-tuning and MXFP8 RL are supported out-of-the-box, and we also upgraded SkyRL for efficient RL at 500B scale.', tag: 'RELEASE', publishedAt: '2026-10-16', href: '/blog/day-0-beam' },
   { read: 'Mercor + SkyRL', title: 'Training frontier knowledge work agents: A 397B RL training guide with SkyRL', excerpt: 'A step-by-step guide to post-training Qwen3.5-397B-A17B with SkyRL, including the infrastructure, systems tuning, and lessons behind the hero run.', tag: 'CASE STUDY', publishedAt: '2026-09-01', href: 'https://mercor.com/blog/training-frontier-knowledge-work-agents-a-397b-rl-training-guide-with-skyrl' },
   { read: 'SkyRL v0.4.0', title: 'SkyRL v0.4.0: Improving SkyRL for large scale post-training', excerpt: 'New model support, more stable RL, faster routing replay, efficient weight transfer, and a stronger path to production-scale experiments.', tag: 'RELEASE', publishedAt: '2026-10-06', href: '/blog/skyrl-v0-4-0' },
   { read: 'SkyRL v0', title: 'SkyRL v0: Train real-world long-horizon agents via reinforcement learning', excerpt: 'Introducing SkyRL v0, an open framework for training capable long-horizon agents with reinforcement learning.', tag: 'RESEARCH', publishedAt: '2025-05-06', href: 'https://novasky-ai.notion.site/skyrl-v0' },
@@ -81,7 +81,7 @@ export default function Page() {
             <div className="flex flex-col justify-center p-8 md:px-12 md:py-10">
               <p className="mb-4 text-[11px] font-bold tracking-[0.18em] text-[#1769ff]">FEATURED · RELEASE</p>
               <h2 id="featured-heading" className="max-w-[520px] text-[28px] font-semibold leading-[1.12] tracking-[-0.04em] md:text-[34px]">Day 0 Support for Beam in SkyRL</h2>
-              <p className="mt-5 text-[14px] leading-6 text-[#667085]">The first Day 0 RL effort for SkyRL. We added support for LoRA, BF16 full fine-tuning and MXFP8 RL for Beam, and also upgraded SkyRL for efficient RL at 500B scale.</p>
+              <p className="mt-5 text-[14px] leading-6 text-[#667085]">Day 0 RL support for Beam. LoRA, BF16 full fine-tuning and MXFP8 RL are supported out-of-the-box, and we also upgraded SkyRL for efficient RL at 500B scale.</p>
               <div className="mt-7 flex items-center gap-3 text-[12px] font-medium text-[#8a93a2]"><time>October 2026</time><span>·</span><span>Reflection + SkyRL</span><ArrowUpRight size={16} className="ml-auto text-[#1769ff] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
             </div>
           </a>
