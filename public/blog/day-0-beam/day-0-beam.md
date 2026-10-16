@@ -108,7 +108,7 @@ These optimizations enable users to train Beam on as low as 2 B200 nodes with Lo
 
 ## Conclusion {#conclusion}
 
-Train Beam with SkyRL using one of our example scripts [here](https://github.com/NovaSky-AI/SkyRL/blob/beam-release/examples/train/models/reflection/beam/). 
+Train Beam with SkyRL following the documentation [here](https://docs.skyrl.ai/docs/examples/beam).
 
 We’d like to thank the Reflection team for providing us with early access to Beam as well as their Megatron-Bridge implementation, and to Inferact for enabling Beam in vLLM. We'd also like to thank Google Cloud for providing us the GPU training cluster for the training runs in this post.
 
