@@ -22,7 +22,7 @@ Sumanth Hegde and the SkyRL team
 
 We are excited to announce Day 0 support for Beam from Reflection on SkyRL. Beam is Reflection’s first model and the latest OSS model in the United States, advancing the Western frontier in the 500B-parameter class. As part of the Day 0 support in SkyRL, we’ve enabled LoRA, BF16 full fine-tuning as well as MXFP8 RL on Beam. 
 
-Below, we share some of our results for training on the DAPO recipe as well as our work towards enabling efficient training for this 500B model \- right-sizing expert adapters in vLLM for 62% faster decoding with LoRA, supporting optimizer streaming from disk, and more. This is the first Day-0 RL support effort in SkyRL. 
+Below, we share some of our results for training on the DAPO recipe as well as our work towards enabling efficient training for this 501B model \- right-sizing expert adapters in vLLM for 62% faster decoding with LoRA, supporting optimizer streaming from disk, and more. This is the first Day-0 RL support effort in SkyRL. 
 
 Try out SkyRL today by visiting the docs: [https\://docs.skyrl.ai/](https://docs.skyrl.ai/docs)
 
