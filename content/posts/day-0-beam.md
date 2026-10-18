@@ -1,24 +1,14 @@
-# Day 0 Support for Beam in SkyRL
-
-Sumanth Hegde and the SkyRL team
-
-[Architecture Highlights](#architecture-highlights)
-
-[E2E Training with Beam on SkyRL](#e2e-training-with-beam-on-skyrl)
-
-[MXFP8 RL with Beam](#mxfp8-rl-with-beam)
-
-[Enabling Beam in SkyRL](#enabling-beam-in-skyrl)
-
-[Conclusion](#conclusion)
-
-[Appendix](#appendix)
-
-[LoRA configuration](#lora-configuration)
-
-[Full fine-tuning configuration](#full-fine-tuning-configuration)
-
-[MXFP8 configuration](#mxfp8-configuration)
+---
+title: Day 0 Support for Beam in SkyRL
+date: 2026-10-16
+tag: RELEASE
+authors: Sumanth Hegde and the SkyRL team
+label: SkyRL + Reflection + Inferact
+excerpt: Day 0 RL support for Beam. LoRA, BF16 full fine-tuning and MXFP8 RL are supported out-of-the-box, and we also upgraded SkyRL for efficient RL at 500B scale.
+hero: hero.png
+heroAlt: "SkyRL × vLLM × Reflection: Day 0 Support for Beam"
+featured: true
+---
 
 We are excited to announce Day 0 support for Beam from Reflection on SkyRL. Beam is Reflection’s first model and the latest OSS model in the United States, advancing the Western frontier in the 500B-parameter class. As part of the Day 0 support in SkyRL, we’ve enabled LoRA, BF16 full fine-tuning as well as MXFP8 RL on Beam. 
 

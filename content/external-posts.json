@@ -1,0 +1,154 @@
+[
+  {
+    "title": "Training frontier knowledge work agents: A 397B RL training guide with SkyRL",
+    "date": "2026-09-01",
+    "tag": "CASE STUDY",
+    "label": "Mercor + SkyRL",
+    "excerpt": "A step-by-step guide to post-training Qwen3.5-397B-A17B with SkyRL, including the infrastructure, systems tuning, and lessons behind the hero run.",
+    "href": "https://mercor.com/blog/training-frontier-knowledge-work-agents-a-397b-rl-training-guide-with-skyrl"
+  },
+  {
+    "title": "SkyRL v0.4.0: Improving SkyRL for large scale post-training",
+    "date": "2026-10-06",
+    "tag": "RELEASE",
+    "label": "SkyRL v0.4.0",
+    "excerpt": "New model support, more stable RL, faster routing replay, efficient weight transfer, and a stronger path to production-scale experiments.",
+    "href": "/blog/skyrl-v0-4-0"
+  },
+  {
+    "title": "SkyRL v0: Train real-world long-horizon agents via reinforcement learning",
+    "date": "2025-05-06",
+    "tag": "RESEARCH",
+    "label": "SkyRL v0",
+    "excerpt": "Introducing SkyRL v0, an open framework for training capable long-horizon agents with reinforcement learning.",
+    "href": "https://novasky-ai.notion.site/skyrl-v0"
+  },
+  {
+    "title": "SkyRL SQL: Reinforcement learning with structured data",
+    "date": "2025-05-20",
+    "tag": "RESEARCH",
+    "label": "SkyRL SQL",
+    "excerpt": "Training agents to reason over databases, structured data, and reliable tool interactions.",
+    "href": "https://novasky-ai.notion.site/skyrl-sql"
+  },
+  {
+    "title": "SkyRL v0.1: Building a stronger foundation for agent RL",
+    "date": "2025-06-26",
+    "tag": "RELEASE",
+    "label": "SkyRL v0.1",
+    "excerpt": "The next step in making full-stack reinforcement learning research more modular and reproducible.",
+    "href": "https://novasky-ai.notion.site/skyrl-v01"
+  },
+  {
+    "title": "Search-R1: Training reasoning models to search",
+    "date": "2025-07-10",
+    "tag": "RESEARCH",
+    "label": "Search-R1",
+    "excerpt": "Exploring reinforcement learning for agents that learn when and how to search for information.",
+    "href": "https://novasky-ai.notion.site/skyrl-searchr1"
+  },
+  {
+    "title": "SkyRL DeepResearch: Long-horizon research agents",
+    "date": "2025-09-11",
+    "tag": "RESEARCH",
+    "label": "DeepResearch",
+    "excerpt": "A look at the systems and training recipes behind capable research-oriented agents.",
+    "href": "https://novasky-ai.notion.site/skyrl-agent-deepresearch"
+  },
+  {
+    "title": "SkyRL TX: Scaling training for tool-using agents",
+    "date": "2025-10-06",
+    "tag": "ENGINEERING",
+    "label": "SkyRL TX",
+    "excerpt": "New infrastructure for efficient reinforcement learning with tool use and external environments.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx"
+  },
+  {
+    "title": "SkyRL TX v0.0.2: Iterating on agent training infrastructure",
+    "date": "2025-10-14",
+    "tag": "RELEASE",
+    "label": "SkyRL TX v0.0.2",
+    "excerpt": "An incremental release focused on making agent training workflows easier to run and extend.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-v002"
+  },
+  {
+    "title": "SkyRL TX 0.0.3: More reliable experiments",
+    "date": "2025-10-21",
+    "tag": "RELEASE",
+    "label": "SkyRL TX 0.0.3",
+    "excerpt": "Updates to the TX stack for reproducible, production-minded reinforcement learning research.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-003"
+  },
+  {
+    "title": "SkyRL TX v0.1.0: A new milestone for tool-use RL",
+    "date": "2025-11-03",
+    "tag": "RELEASE",
+    "label": "SkyRL TX v0.1.0",
+    "excerpt": "The first major TX release brings a more complete foundation for training tool-using agents.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-v010"
+  },
+  {
+    "title": "SkyRL TX v0.2: Advancing scalable agent training",
+    "date": "2025-12-08",
+    "tag": "RELEASE",
+    "label": "SkyRL TX v0.2",
+    "excerpt": "New capabilities for scaling experiments across environments, tools, and model families.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-v02"
+  },
+  {
+    "title": "SkyRL TX Release — February 2026",
+    "date": "2026-02-27",
+    "tag": "RELEASE",
+    "label": "SkyRL TX Release",
+    "excerpt": "A release update covering the latest progress in SkyRL TX and tool-using agent research.",
+    "href": "https://app.notion.com/p/SkyRL-tx-Release-2026-02-27-3138f0016b9d80f7a954c0bb0c42bf68"
+  },
+  {
+    "title": "SkyRL TX v0.3.0: Toward dependable agent RL",
+    "date": "2026-02-08",
+    "tag": "RELEASE",
+    "label": "SkyRL TX v0.3.0",
+    "excerpt": "A new TX release with improvements for dependable, scalable training workflows.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-v030"
+  },
+  {
+    "title": "SkyRL TX v0.2.1: Refining the training loop",
+    "date": "2026-01-01",
+    "tag": "RELEASE",
+    "label": "SkyRL TX v0.2.1",
+    "excerpt": "A focused update that improves the day-to-day experience of running TX experiments.",
+    "href": "https://novasky-ai.notion.site/skyrl-tx-v021"
+  },
+  {
+    "title": "SkyRL Tinker: Faster iteration for RL researchers",
+    "date": "2026-02-13",
+    "tag": "ENGINEERING",
+    "label": "SkyRL Tinker",
+    "excerpt": "Making it easier to prototype, debug, and iterate on reinforcement learning ideas.",
+    "href": "https://novasky-ai.notion.site/skyrl-tinker"
+  },
+  {
+    "title": "On-policy distillation for capable language agents",
+    "date": "2025-11-07",
+    "tag": "RESEARCH",
+    "label": "On-Policy Distillation",
+    "excerpt": "A practical look at distilling strong behaviors into models through on-policy training.",
+    "href": "https://novasky-ai.notion.site/on-policy-distillation"
+  },
+  {
+    "title": "SkyRL Harbor: A home for agent environments",
+    "date": "2026-02-17",
+    "tag": "ENGINEERING",
+    "label": "SkyRL Harbor",
+    "excerpt": "An environment layer for bringing richer tasks and real-world interaction into agent RL.",
+    "href": "https://novasky-ai.notion.site/skyrl-harbor"
+  },
+  {
+    "title": "SkyRL v0.3: The open stack keeps moving",
+    "date": "2026-07-17",
+    "tag": "RELEASE",
+    "label": "SkyRL v0.3",
+    "excerpt": "The latest SkyRL milestone and what comes next for open, full-stack reinforcement learning.",
+    "href": "https://novasky-ai.notion.site/skyrl-v03"
+  }
+]
