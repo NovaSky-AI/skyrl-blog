@@ -1,5 +1,7 @@
 # SkyRL Blog
 
+[![Build and deploy](https://github.com/NovaSky-AI/skyrl-blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/NovaSky-AI/skyrl-blog/actions/workflows/deploy.yml)
+
 Source for [blog.skyrl.ai](https://blog.skyrl.ai), the blog of the [SkyRL](https://github.com/NovaSky-AI/SkyRL)
 project. It is a [Next.js](https://nextjs.org) site; posts are Markdown files.
 
