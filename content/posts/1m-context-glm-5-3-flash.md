@@ -17,7 +17,7 @@ However, there are many engineering challenges with training models at that leng
 
 In the latest version of SkyRL, the SkyRL team worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
 
-![Peak memory at 1M tokens, adding one optimization at a time](./peak-memory-waterfall.png)
+![Peak memory at 1M tokens, adding one optimization at a time](./peak-memory-waterfall.svg)
 
 *Note: The bf16 MoE combine looks small here because it saves far more on real data with uneven expert routing.*
 

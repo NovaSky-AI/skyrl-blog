@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700" role="img" aria-label="Peak memory per GPU at 1M tokens on 64 B200s as optimizations are added one at a time: 121 TiB with none, then 5.1 TiB, 1.3 TiB, 502 GiB, 338 GiB, 248 GiB, 161 GiB, and 144.5 GiB with all of them, under the B200 capacity of 178 GiB.">
+<style>
+text { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.t { font-size: 25px; font-weight: 700; fill: #1b1b1b; }
+.sub { font-size: 13.5px; fill: #6f6f6f; }
+.rl { font-size: 14px; font-weight: 700; }
+.v { font-size: 14px; fill: #6f6f6f; }
+.ax { font-size: 13px; fill: #6f6f6f; }
+.cap { font-size: 12.5px; fill: #1b1b1b; }
+
+@keyframes k1 { 0%, 4.000% { opacity: 0; } 6.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k2 { 0%, 4.000% { transform: scaleX(0); animation-timing-function: ease-in-out; } 12.000%, 92.000% { transform: scaleX(1); } 96.800%, 100% { transform: scaleX(0); } }
+@keyframes k3 { 0%, 12.000% { opacity: 0; } 14.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k4 { 0%, 14.400% { opacity: 0; } 16.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k5 { 0%, 14.400% { opacity: 0; } 16.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k6 { 0%, 16.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 21.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k7 { 0%, 21.200% { opacity: 0; } 23.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k8 { 0%, 22.400% { opacity: 0; } 24.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k9 { 0%, 22.400% { opacity: 0; } 24.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k10 { 0%, 24.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 29.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k11 { 0%, 29.200% { opacity: 0; } 31.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k12 { 0%, 30.400% { opacity: 0; } 32.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k13 { 0%, 30.400% { opacity: 0; } 32.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k14 { 0%, 32.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 37.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k15 { 0%, 37.200% { opacity: 0; } 39.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k16 { 0%, 38.400% { opacity: 0; } 40.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k17 { 0%, 38.400% { opacity: 0; } 40.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k18 { 0%, 40.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 45.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k19 { 0%, 45.200% { opacity: 0; } 47.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k20 { 0%, 46.400% { opacity: 0; } 48.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k21 { 0%, 46.400% { opacity: 0; } 48.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k22 { 0%, 48.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 53.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k23 { 0%, 53.200% { opacity: 0; } 55.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k24 { 0%, 54.400% { opacity: 0; } 56.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k25 { 0%, 54.400% { opacity: 0; } 56.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k26 { 0%, 56.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 61.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k27 { 0%, 61.200% { opacity: 0; } 63.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k28 { 0%, 62.400% { opacity: 0; } 64.400%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k29 { 0%, 62.400% { opacity: 0; } 64.000%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@keyframes k30 { 0%, 64.400% { transform: scaleX(1); animation-timing-function: ease-in-out; } 69.200%, 92.000% { transform: scaleX(0); } 96.800%, 100% { transform: scaleX(1); } }
+@keyframes k31 { 0%, 69.200% { opacity: 0; } 71.200%, 92.000% { opacity: 1; } 96.800%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { g, rect, text { animation: none !important; } g, text { opacity: 1 !important; } .grow { transform: none !important; } .collapse { transform: scaleX(0) !important; } }</style>
+<rect width="1000" height="700" fill="#fff"/>
+<text class="t" x="40" y="58">Peak memory at 1M tokens, one optimization at a time</text>
+<text class="sub" x="40" y="92">Full GLM-5.3-Flash on 64 B200. Each row adds one optimization, largest saving first.</text>
+<text class="sub" x="40" y="112">Savings are estimated one at a time and stacked, so intermediate rows are approximate.</text>
+<line x1="336.53899569681994" y1="170" x2="336.53899569681994" y2="590" stroke="#e2e2de" stroke-dasharray="4 4"/>
+<text class="ax" x="336.53899569681994" y="614" text-anchor="middle">100 GiB</text>
+<line x1="502.93770577292946" y1="170" x2="502.93770577292946" y2="590" stroke="#e2e2de" stroke-dasharray="4 4"/>
+<text class="ax" x="502.93770577292946" y="614" text-anchor="middle">1 TiB</text>
+<line x1="667.6399894684964" y1="170" x2="667.6399894684964" y2="590" stroke="#e2e2de" stroke-dasharray="4 4"/>
+<text class="ax" x="667.6399894684964" y="614" text-anchor="middle">10 TiB</text>
+<line x1="832.3422731640636" y1="170" x2="832.3422731640636" y2="590" stroke="#e2e2de" stroke-dasharray="4 4"/>
+<text class="ax" x="832.3422731640636" y="614" text-anchor="middle">100 TiB</text>
+<text class="ax" x="575.0" y="642" text-anchor="middle">peak GPU memory per GPU (log scale)</text>
+<g style="animation: k1 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="210.0" text-anchor="end" style="fill:#1b1b1b">no optimizations</text>
+</g>
+<g class="grow" style="transform-origin: 300px 0px; animation: k2 12.5s linear infinite; transform: scaleX(0);">
+<rect x="300.0" y="190" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="190" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="190" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect x="401.50608833645276" y="190" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1"/>
+<rect x="423.6527841172735" y="190" width="28.293713987303875" height="30" fill="#2fa84f" stroke="#fff" stroke-width="1"/>
+<rect x="451.94649810457736" y="190" width="69.7579380052166" height="30" fill="#e2582f" stroke="#fff" stroke-width="1"/>
+<rect x="521.704436109794" y="190" width="97.77169354134014" height="30" fill="#8a4fd8" stroke="#fff" stroke-width="1"/>
+<rect x="619.4761296511341" y="190" width="226.50108306063214" height="30" fill="#12a39f" stroke="#fff" stroke-width="1"/>
+</g>
+<text class="v show" x="857.9772127117662" y="210.0" style="fill:#6f6f6f; font-weight:400; animation: k3 12.5s linear infinite; opacity: 0;">121 TiB</text>
+<g style="animation: k4 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="260.0" text-anchor="end" style="fill:#12a39f">+ sparse attention kernel</text>
+</g>
+<g class="row" style="animation: k5 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="240" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="240" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="240" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect x="401.50608833645276" y="240" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1"/>
+<rect x="423.6527841172735" y="240" width="28.293713987303875" height="30" fill="#2fa84f" stroke="#fff" stroke-width="1"/>
+<rect x="451.94649810457736" y="240" width="69.7579380052166" height="30" fill="#e2582f" stroke="#fff" stroke-width="1"/>
+<rect x="521.704436109794" y="240" width="97.77169354134014" height="30" fill="#8a4fd8" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="619.4761296511341" y="240" width="226.50108306063214" height="30" fill="#12a39f" stroke="#fff" stroke-width="1" style="transform-origin: 619.4761296511341px 0px; animation: k6 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="631.4761296511341" y="260.0" style="fill:#6f6f6f; font-weight:400; animation: k7 12.5s linear infinite; opacity: 0;">5.1 TiB</text>
+<g style="animation: k8 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="310.0" text-anchor="end" style="fill:#8a4fd8">+ indexer query chunking</text>
+</g>
+<g class="row" style="animation: k9 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="290" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="290" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="290" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect x="401.50608833645276" y="290" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1"/>
+<rect x="423.6527841172735" y="290" width="28.293713987303875" height="30" fill="#2fa84f" stroke="#fff" stroke-width="1"/>
+<rect x="451.94649810457736" y="290" width="69.7579380052166" height="30" fill="#e2582f" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="521.704436109794" y="290" width="97.77169354134014" height="30" fill="#8a4fd8" stroke="#fff" stroke-width="1" style="transform-origin: 521.704436109794px 0px; animation: k10 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="533.704436109794" y="310.0" style="fill:#6f6f6f; font-weight:400; animation: k11 12.5s linear infinite; opacity: 0;">1.3 TiB</text>
+<g style="animation: k12 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="360.0" text-anchor="end" style="fill:#e2582f">+ full recompute</text>
+</g>
+<g class="row" style="animation: k13 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="340" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="340" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="340" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect x="401.50608833645276" y="340" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1"/>
+<rect x="423.6527841172735" y="340" width="28.293713987303875" height="30" fill="#2fa84f" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="451.94649810457736" y="340" width="69.7579380052166" height="30" fill="#e2582f" stroke="#fff" stroke-width="1" style="transform-origin: 451.94649810457736px 0px; animation: k14 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="463.94649810457736" y="360.0" style="fill:#6f6f6f; font-weight:400; animation: k15 12.5s linear infinite; opacity: 0;">502 GiB</text>
+<g style="animation: k16 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="410.0" text-anchor="end" style="fill:#2fa84f">+ router-probs release</text>
+</g>
+<g class="row" style="animation: k17 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="390" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="390" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="390" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect x="401.50608833645276" y="390" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="423.6527841172735" y="390" width="28.293713987303875" height="30" fill="#2fa84f" stroke="#fff" stroke-width="1" style="transform-origin: 423.6527841172735px 0px; animation: k18 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="435.6527841172735" y="410.0" style="fill:#6f6f6f; font-weight:400; animation: k19 12.5s linear infinite; opacity: 0;">338 GiB</text>
+<g style="animation: k20 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="460.0" text-anchor="end" style="fill:#55595c">+ context parallelism</text>
+</g>
+<g class="row" style="animation: k21 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="440" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="440" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect x="370.60368980660184" y="440" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="401.50608833645276" y="440" width="22.14669578082072" height="30" fill="#55595c" stroke="#fff" stroke-width="1" style="transform-origin: 401.50608833645276px 0px; animation: k22 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="413.50608833645276" y="460.0" style="fill:#6f6f6f; font-weight:400; animation: k23 12.5s linear infinite; opacity: 0;">248 GiB</text>
+<g style="animation: k24 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="510.0" text-anchor="end" style="fill:#e8a21c">+ checkpoint offload</text>
+</g>
+<g class="row" style="animation: k25 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="490" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect x="362.8695952024594" y="490" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="370.60368980660184" y="490" width="30.902398529850927" height="30" fill="#e8a21c" stroke="#fff" stroke-width="1" style="transform-origin: 370.60368980660184px 0px; animation: k26 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="389.78374196014397" y="510.0" style="fill:#1b1b1b; font-weight:700; animation: k27 12.5s linear infinite; opacity: 0;">161 GiB</text>
+<g style="animation: k28 12.5s linear infinite; opacity: 0;">
+<text class="rl" x="284" y="560.0" text-anchor="end" style="fill:#e04f9c">+ bf16 MoE combine (all)</text>
+</g>
+<g class="row" style="animation: k29 12.5s linear infinite; opacity: 0;">
+<rect x="300.0" y="540" width="62.86959520245938" height="30" fill="#2f6fc6" stroke="#fff" stroke-width="1"/>
+<rect class="collapse" x="362.8695952024594" y="540" width="7.734094604142456" height="30" fill="#e04f9c" stroke="#fff" stroke-width="1" style="transform-origin: 362.8695952024594px 0px; animation: k30 12.5s linear infinite; transform: scaleX(1);"/>
+</g>
+<text class="v show" x="389.78374196014397" y="560.0" style="fill:#2f6fc6; font-weight:700; animation: k31 12.5s linear infinite; opacity: 0;">144.5 GiB</text>
+<line x1="377.78374196014397" y1="168" x2="377.78374196014397" y2="590" stroke="#1b1b1b" stroke-width="1.6"/>
+<text class="cap" x="383.78374196014397" y="180">B200 capacity · 178 GiB</text>
+</svg>
