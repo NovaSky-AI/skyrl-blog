@@ -9,7 +9,7 @@ layout: sidebar
 featured: true
 hero: hero.png
 heroAlt: "Sparse attention: one query attends to a few dozen tokens scattered across a long context"
-excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64x the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
+excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64× the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
 draft: true
 ---
 
@@ -19,7 +19,7 @@ The model capabilities with the highest practical usefulness involve **long cont
 
 However, there are many engineering challenges with training models at that length of context. Memory grows with sequence length in every layer, and in attention it grows quadratically, so standard open source training frameworks run out of memory well before 1M tokens.
 
-In the latest version of SkyRL, the SkyRL team from Anyscale worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
+In the latest version of SkyRL, the SkyRL team from Anyscale worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64× higher than the previous baseline.
 
 ![Peak memory at 1M tokens, adding one optimization at a time](./peak-memory-waterfall.svg)
 
@@ -62,9 +62,9 @@ These fixes apply to any model built on DSA, such as the DeepSeek family, not ju
 
 GLM-5.3-Flash's DSA layers weren't actually running sparse. Megatron-core's fused sparse attention kernels only accept DeepSeek-V3.2's tensor shapes. DeepSeek's (and the full GLM-5.3's) queries and keys carry 64 extra channels for rotary position embeddings (RoPE), which encode each token's position, but GLM-5.3-Flash's DSA layers use no positional embeddings (NoPE), so their queries and keys are narrower, and its pooled indexer selects 2,051 keys instead of 2,048. The kernels silently declined these shapes, and Megatron fell back to dense attention over the full S × S matrix. With every other optimization in place, that fallback used 114 GiB per GPU at 16k and ran out of memory at 32k.
 
-We pad GLM's tensors to the shapes the kernel expects ([#2388](https://github.com/NovaSky-AI/SkyRL/pull/2388)). With the sparse kernel, 16k drops to 56 GiB per GPU, half the memory, and 32k no longer runs out of memory. Among the sparse kernels, we use TileLang because it pads attention heads far less than cuDNN/FlashMLA, which uses about 3x the memory at 128k. Generally, enabling long context on new models requires checking that each layer actually runs the kernel you expect. A silent fallback looks like a memory problem, not a bug.
+We pad GLM's tensors to the shapes the kernel expects ([#2388](https://github.com/NovaSky-AI/SkyRL/pull/2388)). With the sparse kernel, 16k drops to 56 GiB per GPU, half the memory, and 32k no longer runs out of memory. Among the sparse kernels, we use TileLang because it pads attention heads far less than cuDNN/FlashMLA, which uses about 3× the memory at 128k. Generally, enabling long context on new models requires checking that each layer actually runs the kernel you expect. A silent fallback looks like a memory problem, not a bug.
 
-![Sparse attention kernel: 3x less memory than cuDNN](./sparse-kernel.png)
+![Sparse attention kernel: 3× less memory than cuDNN](./sparse-kernel.png)
 
 ### Splitting the DSA Indexer {#splitting-the-dsa-indexer}
 
@@ -111,7 +111,7 @@ At 1M tokens, even with everything else in place, a single sequence's activation
 
 ### KDA: Communicate the Smallest Tensor {#kda-communicate-the-smallest-tensor}
 
-Megatron's Ulysses implementation exchanges the projected queries, keys, values, and gates, which are about 10× wider than the hidden state ([#2418](https://github.com/NovaSky-AI/SkyRL/pull/2418)). We gather the hidden state instead and have each GPU project only its own heads ([#2437](https://github.com/NovaSky-AI/SkyRL/pull/2437)). At CP2, this sends about 5x fewer bytes into each KDA layer, since the all-to-all only sends the heads that live on the other ranks. Communication is only part of the step, so the end-to-end gain is smaller: a 1M step went from 335 s to 307 s (−8%). Generally, we want to move the communication where the tensor is smallest. *(To learn more about how the different parallelism schemes interact with the KDA layer see the [Appendix](#appendix).)*
+Megatron's Ulysses implementation exchanges the projected queries, keys, values, and gates, which are about 10× wider than the hidden state ([#2418](https://github.com/NovaSky-AI/SkyRL/pull/2418)). We gather the hidden state instead and have each GPU project only its own heads ([#2437](https://github.com/NovaSky-AI/SkyRL/pull/2437)). At CP2, this sends about 5× fewer bytes into each KDA layer, since the all-to-all only sends the heads that live on the other ranks. Communication is only part of the step, so the end-to-end gain is smaller: a 1M step went from 335 s to 307 s (−8%). Generally, we want to move the communication where the tensor is smallest. *(To learn more about how the different parallelism schemes interact with the KDA layer see the [Appendix](#appendix).)*
 
 ![Context parallelism for KDA at CP2: all-to-all vs. all-gather](./kda-cp.svg)
 
@@ -169,7 +169,7 @@ In full RL runs with the real weights, trainer and vLLM log-probabilities agree 
 
 **Context, Tensor, and Sequence Parallelism with the KDA Layer**
 
-![KDA context parallelism with all-gather at CP2 x TP2](./kda-cp-detail.png)
+![KDA context parallelism with all-gather at CP2 × TP2](./kda-cp-detail.png)
 
 Each GPU is one TP rank inside one CP rank. Between layers, CP splits the sequence across CP ranks (rank 0 owns t1, t2, t7, t8; rank 1 owns t3–t6), and sequence parallelism (SP) splits each CP rank's tokens again across its TP ranks, so each GPU holds s/(CP·TP) tokens.
 
