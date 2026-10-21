@@ -57,6 +57,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body a { color: #1769ff; text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
           .document-body a:hover { color: #0b4dcc; }
           .document-body img { display: block; max-width: 100%; height: auto; margin: 38px auto; border: 1px solid #e7e8eb; border-radius: 12px; }
+          .document-body p:has(> img) + p:has(> em:only-child) { max-width: 760px; margin: -20px auto 40px; color: #98a2b3; font-size: 14px; line-height: 1.6; text-align: center; }
+          .document-body p:has(> img) + p:has(> em:only-child) em { font-style: normal; }
           .document-body pre { overflow-x: auto; margin: 28px 0; padding: 22px; border: 1px solid #e7e8eb; border-radius: 12px; background: #f8f9fb; color: #202124; font: 14px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
           .document-body code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
           .document-body :not(pre) > code { padding: 2px 5px; border-radius: 4px; background: #f2f4f7; color: #344054; font-size: .92em; }

@@ -22,7 +22,8 @@ the site deploys to [blog.skyrl.ai](https://blog.skyrl.ai) automatically.
    | `featured` | no | `true` shows the post in the homepage's featured card; the newest featured post wins |
    | `draft` | no | `true` hides the post everywhere except local preview |
 
-3. Put images in `public/blog/<slug>/` and reference them from the post as `./figure.png`. Keep each image under
+3. Put images in `public/blog/<slug>/` and reference them from the post as `./figure.png`. An italic paragraph
+   directly after an image (`*Note: ...*`) is shown as that image's caption. Keep each image under
    about 1 MB (1600-2000 px wide is plenty).
 4. Write the body in Markdown below the frontmatter. `##` and `###` headings make up the table of contents. Tables,
    code blocks and inline HTML work. Don't repeat the title or byline in the body.
