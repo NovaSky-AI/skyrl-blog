@@ -15,7 +15,7 @@ The model capabilities with the highest practical usefulness involve **long cont
 
 However, there are many engineering challenges with training models at that length of context. Memory grows with sequence length in every layer, and in attention it grows quadratically, so standard open source training frameworks run out of memory well before 1M tokens.
 
-In the latest version of SkyRL, the SkyRL team worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
+In the latest version of SkyRL, the SkyRL team from Anyscale worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
 
 ![Peak memory at 1M tokens, adding one optimization at a time](./peak-memory-waterfall.svg)
 
