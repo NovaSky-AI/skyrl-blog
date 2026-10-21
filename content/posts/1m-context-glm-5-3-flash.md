@@ -5,6 +5,7 @@ date: 2026-10-18
 tag: ENGINEERING
 authors: "Avi Basnet and SkyRL Team; Keith Truongcao and the Lila Sciences' AI Research Team"
 label: SkyRL + Lila Sciences
+layout: sidebar
 excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64x the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
 draft: true
 ---

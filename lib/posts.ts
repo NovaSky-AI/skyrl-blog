@@ -25,6 +25,8 @@ export type Post = PostSummary & {
   /** Title as shown on the post page; `title` appends the subtitle for listings and link previews. */
   heading: string
   subtitle?: string
+  /** `sidebar`: wider side padding, image captions and a sticky contents sidebar on wide screens. */
+  layout: 'default' | 'sidebar'
   authors: string
   hero?: string
   heroAlt: string
@@ -57,6 +59,12 @@ function toTag(value: unknown, file: string): Tag {
   return tag as Tag
 }
 
+function toLayout(value: unknown, file: string): Post['layout'] {
+  if (value === undefined) return 'default'
+  if (value !== 'default' && value !== 'sidebar') throw new Error(`${file}: frontmatter "layout" must be default or sidebar`)
+  return value
+}
+
 function readPost(file: string): Post {
   const slug = file.replace(/\.md$/, '')
   const { data, content } = matter(fs.readFileSync(path.join(POSTS_DIR, file), 'utf8'))
@@ -68,6 +76,7 @@ function readPost(file: string): Post {
     title,
     heading,
     subtitle,
+    layout: toLayout(data.layout, file),
     date: toDate(data.date, file),
     tag: toTag(data.tag, file),
     label: typeof data.label === 'string' ? data.label : 'SkyRL',
