@@ -40,7 +40,7 @@ Everything is open source and reproducible, and several fixes also go back upstr
 
 ![Peak memory per GPU with one optimization removed at a time](./memory-ablation.png)
 
-*Each dashed line shows peak memory per GPU during training with one optimization turned off and the rest left on. The solid blue line has all of them on and stays under the B200’s 178 GiB all the way to 1M tokens (144.5 GiB).*
+*Each dashed line shows peak memory per GPU during training with one optimization turned off and the rest left on. The solid blue line has all of them on and stays under the B200's 178 GiB all the way to 1M tokens (144.5 GiB).*
 
 ## DeepSeek Sparse Attention (DSA) Optimizations {#dsa-optimizations}
 
@@ -60,7 +60,7 @@ These fixes apply to any model built on DSA, such as the DeepSeek family, not ju
 
 ### Making Sparse Attention Actually Sparse {#making-sparse-attention-actually-sparse}
 
-GLM-5.3-Flash’s DSA layers weren’t actually running sparse. Megatron-core’s fused sparse attention kernels only accept DeepSeek-V3.2’s tensor shapes. DeepSeek’s (and the full GLM-5.3’s) queries and keys carry 64 extra channels for rotary position embeddings (RoPE), which encode each token’s position, but GLM-5.3-Flash’s DSA layers use no positional embeddings (NoPE), so their queries and keys are narrower, and its pooled indexer selects 2,051 keys instead of 2,048. The kernels silently declined these shapes, and Megatron fell back to dense attention over the full S × S matrix. With every other optimization in place, that fallback used 114 GiB per GPU at 16k and ran out of memory at 32k.
+GLM-5.3-Flash's DSA layers weren't actually running sparse. Megatron-core's fused sparse attention kernels only accept DeepSeek-V3.2's tensor shapes. DeepSeek's (and the full GLM-5.3's) queries and keys carry 64 extra channels for rotary position embeddings (RoPE), which encode each token's position, but GLM-5.3-Flash's DSA layers use no positional embeddings (NoPE), so their queries and keys are narrower, and its pooled indexer selects 2,051 keys instead of 2,048. The kernels silently declined these shapes, and Megatron fell back to dense attention over the full S × S matrix. With every other optimization in place, that fallback used 114 GiB per GPU at 16k and ran out of memory at 32k.
 
 We pad GLM's tensors to the shapes the kernel expects ([#2388](https://github.com/NovaSky-AI/SkyRL/pull/2388)). With the sparse kernel, 16k drops to 56 GiB per GPU, half the memory, and 32k no longer runs out of memory. Among the sparse kernels, we use TileLang because it pads attention heads far less than cuDNN/FlashMLA, which uses about 3x the memory at 128k. Generally, enabling long context on new models requires checking that each layer actually runs the kernel you expect. A silent fallback looks like a memory problem, not a bug.
 
@@ -70,7 +70,7 @@ We pad GLM's tensors to the shapes the kernel expects ([#2388](https://github.co
 
 **Over Time: Chunking**
 
-The indexer’s score matrix grows quadratically with context: at 32k, scoring all queries at once peaked at 64 GiB per GPU, and at 128k it would reach about 1 TiB. We score and select pools a few hundred queries at a time, keeping each chunk under 2 GiB ([#2413](https://github.com/NovaSky-AI/SkyRL/pull/2413)). Indexer memory becomes constant instead of quadratic, with no loss in speed. At 32k, scoring all queries at once peaked at 64 GiB, while chunked scoring stayed around 2.3 GiB. This is similar to the idea in FlashAttention.
+The indexer's score matrix grows quadratically with context: at 32k, scoring all queries at once peaked at 64 GiB per GPU, and at 128k it would reach about 1 TiB. We score and select pools a few hundred queries at a time, keeping each chunk under 2 GiB ([#2413](https://github.com/NovaSky-AI/SkyRL/pull/2413)). Indexer memory becomes constant instead of quadratic, with no loss in speed. At 32k, scoring all queries at once peaked at 64 GiB, while chunked scoring stayed around 2.3 GiB. This is similar to the idea in FlashAttention.
 
 **Across GPUs: Sharding**
 
@@ -117,7 +117,7 @@ Megatron's Ulysses implementation exchanges the projected queries, keys, values,
 
 ### DSA: Gather by Token Position {#dsa-gather-by-token-position}
 
-To balance causal attention, Megatron gives each GPU an early and a late chunk of the sequence (a “zigzag”), then gathers the indexer’s keys from all GPUs back into sequence order. It didn’t do the same for the k-pool gate scores that weight each key within a pool, so each GPU had keys for the whole sequence but scores only for its own tokens. We gather and reorder the gate scores exactly like the keys, so each pool combines matching keys and scores ([#2418](https://github.com/NovaSky-AI/SkyRL/pull/2418)).
+To balance causal attention, Megatron gives each GPU an early and a late chunk of the sequence (a "zigzag"), then gathers the indexer's keys from all GPUs back into sequence order. It didn't do the same for the k-pool gate scores that weight each key within a pool, so each GPU had keys for the whole sequence but scores only for its own tokens. We gather and reorder the gate scores exactly like the keys, so each pool combines matching keys and scores ([#2418](https://github.com/NovaSky-AI/SkyRL/pull/2418)).
 
 Going from 512k without CP to 1M with CP2, aggregate throughput drops from 18.2k to 13.7k tokens/s. Splitting each sequence over 2 GPUs halves the number of sequences trained in parallel, and each step pays for the exchange. The indexer's quadratic cost also keeps growing with length. That's why we only use CP when a sequence wouldn't fit otherwise.
 
@@ -171,6 +171,6 @@ In full RL runs with the real weights, trainer and vLLM log-probabilities agree 
 
 ![KDA context parallelism with all-gather at CP2 x TP2](./kda-cp-detail.png)
 
-Each GPU is one TP rank inside one CP rank. Between layers, CP splits the sequence across CP ranks (rank 0 owns t1, t2, t7, t8; rank 1 owns t3–t6), and sequence parallelism (SP) splits each CP rank’s tokens again across its TP ranks, so each GPU holds s/(CP·TP) tokens.
+Each GPU is one TP rank inside one CP rank. Between layers, CP splits the sequence across CP ranks (rank 0 owns t1, t2, t7, t8; rank 1 owns t3–t6), and sequence parallelism (SP) splits each CP rank's tokens again across its TP ranks, so each GPU holds s/(CP·TP) tokens.
 
 Inside KDA, CP switches from splitting tokens to splitting heads. KDA is a recurrence over the whole sequence, so instead of passing state between ranks, an all-gather within TP and then across CP gives every GPU all s tokens. TP gives each rank half the heads and CP splits each half again, so each GPU projects and runs KDA for H/(TP·CP) heads over the full sequence. An all-to-all across CP then returns each token to its owning CP rank, and the output projection plus a reduce-scatter within TP restore the s/(CP·TP) layout.
