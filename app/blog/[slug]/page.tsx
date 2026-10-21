@@ -31,7 +31,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   return (
     <main className="min-h-screen bg-white text-[#10131a]">
       <header className="border-b border-[#e7e8eb]">
-        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-8 lg:px-10">
+        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-8 sm:px-12 lg:px-20">
           <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em]">
             <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-[8px] bg-[#1769ff] text-white">
               <img src="https://github.com/NovaSky-AI.png" alt="NovaSky AI" className="h-full w-full object-cover" />
@@ -65,10 +65,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body th, .document-body td { padding: 12px 16px; border-bottom: 1px solid #e7e8eb; text-align: left; vertical-align: top; }
           .document-body th { color: #10131a; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-bottom-color: #c4cbd6; }
           .document-body td:first-child { min-width: 170px; color: #10131a; }
-          @media (min-width: 1024px) { .document-body { padding-left: 40px; padding-right: 40px; } }
+          @media (min-width: 640px) { .document-body { padding-left: 48px; padding-right: 48px; } }
+          @media (min-width: 1024px) { .document-body { padding-left: 80px; padding-right: 80px; } }
           @media (max-width: 640px) { article { padding-top: 56px; } .document-body { font-size: 16px; } .document-body h2 { margin-top: 44px; padding-top: 22px; font-size: 28px; } }
         `}</style>
-        <div className="mx-auto mb-12 max-w-[1200px] px-8 lg:px-10">
+        <div className="mx-auto mb-12 max-w-[1200px] px-8 sm:px-12 lg:px-20">
           <div className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.16em] text-[#1769ff]">
             <span>{post.tag}</span>
             <span className="h-1 w-1 rounded-full bg-[#c4cbd6]" />
