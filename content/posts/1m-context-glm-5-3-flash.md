@@ -9,7 +9,7 @@ layout: sidebar
 featured: true
 hero: hero.png
 heroAlt: "Sparse attention: one query attends to a few dozen tokens scattered across a long context"
-excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64× the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
+excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64× the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer fp32 upcasts.
 draft: true
 ---
 
@@ -34,7 +34,7 @@ Getting there took work in four areas, which we walk through below:
 1. **DeepSeek Sparse Attention:** run DSA on a sparse kernel, and chunk and shard its quadratic indexer.
 2. **Activation recompute and offloading:** recompute activations in backward and offload saved inputs to CPU.
 3. **Context parallelism:** split each sequence across GPUs, with new CP support for KDA and a fix for DSA.
-4. **Avoiding unnecessary precision upcasts:** keep FP32 copies out of memory and off the network.
+4. **Avoiding unnecessary precision upcasts:** keep fp32 copies out of memory and off the network.
 
 Everything is open source and reproducible, and several fixes also go back upstream to Megatron-LM ([#7522](https://github.com/NVIDIA/Megatron-LM/pull/7522), [#8297](https://github.com/NVIDIA/Megatron-LM/pull/8297), [#8298](https://github.com/NVIDIA/Megatron-LM/pull/8298), [#8299](https://github.com/NVIDIA/Megatron-LM/pull/8299), [#8300](https://github.com/NVIDIA/Megatron-LM/pull/8300)).
 
@@ -123,17 +123,17 @@ Going from 512k without CP to 1M with CP2, aggregate throughput drops from 18.2k
 
 ## Avoiding Unnecessary Precision Upcasts {#avoiding-unnecessary-precision-upcasts}
 
-GLM-5.3-Flash trains in bf16, but in two places Megatron upcasts a tensor to FP32 and then stores or sends the FP32 copy, even though nothing needs the extra precision. Each is a hidden 2× cost in memory or communication.
+GLM-5.3-Flash trains in bf16, but in two places Megatron upcasts a tensor to fp32 and then stores or sends the fp32 copy, even though nothing needs the extra precision. Each is a hidden 2× cost in memory or communication.
 
 **The mHC projection** ([#2434](https://github.com/NovaSky-AI/SkyRL/pull/2434))
 
-The mHC projection runs in FP32, and autograd saved the FP32 copy of its input, a second, twice-as-large copy of a tensor already kept in bf16. We recompute the cast in backward instead of storing it, since a cast is almost free to redo. This saves 8 GiB at 512k (152 → 144 GiB), and much more without full recompute.
+The mHC projection runs in fp32, and autograd saved the fp32 copy of its input, a second, twice-as-large copy of a tensor already kept in bf16. We recompute the cast in backward instead of storing it, since a cast is almost free to redo. This saves 8 GiB at 512k (152 → 144 GiB), and much more without full recompute.
 
 **The MoE combine** ([#2414](https://github.com/NovaSky-AI/SkyRL/pull/2414))
 
-Expert outputs were upcast to FP32 before the reduce-scatter across expert-TP ranks. With 2 ranks, that reduction is a single addition, which NCCL already performs in FP32 and rounds once. So reducing in bf16 gives the same result with half the bytes and no FP32 copy. At 512k, FP32 runs out of memory and bf16 fits at 144 GiB. With more than 2 ranks (and/or with NVLS, which reduces inside the NVSwitch), bf16 partial sums are rounded at each step, so we keep FP32 there.
+Expert outputs were upcast to fp32 before the reduce-scatter across expert-TP ranks. With 2 ranks, that reduction is a single addition, which NCCL already performs in fp32 and rounds once. So reducing in bf16 gives the same result with half the bytes and no fp32 copy. At 512k, fp32 runs out of memory and bf16 fits at 144 GiB. With more than 2 ranks (and/or with NVLS, which reduces inside the NVSwitch), bf16 partial sums are rounded at each step, so we keep fp32 there.
 
-Both changes are exact: the mHC fix is bit-identical to the original, and the bf16 combine matches the FP32 result on all 64M elements we compared.
+Both changes are exact: the mHC fix is bit-identical to the original, and the bf16 combine matches the fp32 result on all 64M elements we compared.
 
 ## Training on Real Data {#training-on-real-data}
 
