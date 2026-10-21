@@ -55,6 +55,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body { box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; color: #667085; background: #fff; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.75; }
           .document-body h2 { margin: 64px 0 20px; padding-top: 30px; color: #10131a; border-top: 1px solid #e7e8eb; font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -.045em; line-height: 1.12; scroll-margin-top: 24px; }
           .document-body h3 { margin: 38px 0 14px; color: #10131a; font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -.03em; line-height: 1.25; scroll-margin-top: 24px; }
+          .document-body h4 { margin: 30px 0 12px; color: #10131a; font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; line-height: 1.4; scroll-margin-top: 24px; }
           .document-body p { margin: 0 0 18px; }
           .document-body strong { color: #10131a; }
           .document-body ul, .document-body ol { margin: 0 0 22px; padding-left: 26px; list-style: disc; }
