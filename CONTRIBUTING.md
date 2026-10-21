@@ -12,6 +12,7 @@ the site deploys to [blog.skyrl.ai](https://blog.skyrl.ai) automatically.
    | Field | Required | Meaning |
    |---|---|---|
    | `title` | yes | Post title |
+   | `subtitle` | no | Smaller grey line under the title on the post page; elsewhere it is appended to the title |
    | `date` | yes | Publication date, `YYYY-MM-DD` |
    | `tag` | yes | `RELEASE`, `RESEARCH`, `ENGINEERING` or `CASE STUDY` |
    | `authors` | yes | Byline, e.g. `Jane Doe and the SkyRL team` |

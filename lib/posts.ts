@@ -22,6 +22,9 @@ export type PostSummary = {
 
 export type Post = PostSummary & {
   slug: string
+  /** Title as shown on the post page; `title` appends the subtitle for listings and link previews. */
+  heading: string
+  subtitle?: string
   authors: string
   hero?: string
   heroAlt: string
@@ -57,10 +60,14 @@ function toTag(value: unknown, file: string): Tag {
 function readPost(file: string): Post {
   const slug = file.replace(/\.md$/, '')
   const { data, content } = matter(fs.readFileSync(path.join(POSTS_DIR, file), 'utf8'))
-  const title = requireString(data, 'title', file)
+  const heading = requireString(data, 'title', file)
+  const subtitle = typeof data.subtitle === 'string' && data.subtitle.trim() ? data.subtitle.trim() : undefined
+  const title = subtitle ? `${heading} ${subtitle}` : heading
   return {
     slug,
     title,
+    heading,
+    subtitle,
     date: toDate(data.date, file),
     tag: toTag(data.tag, file),
     label: typeof data.label === 'string' ? data.label : 'SkyRL',

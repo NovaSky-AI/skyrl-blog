@@ -1,5 +1,6 @@
 ---
-title: Scaling Training to 1M Token Context on GLM-5.3-Flash
+title: Scaling Training to 1M Token Context
+subtitle: on GLM-5.3-Flash
 date: 2026-10-18
 tag: ENGINEERING
 authors: "Avi Basnet and SkyRL Team; Keith Truongcao and the Lila Sciences' AI Research Team"

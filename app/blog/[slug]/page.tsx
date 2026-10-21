@@ -78,7 +78,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <time dateTime={post.date} className="font-normal tracking-normal text-[#8a93a2]">{formatDate(post.date)}</time>
             {post.draft && <span className="rounded bg-[#fff4e5] px-2 py-0.5 tracking-normal text-[#b54708]">DRAFT</span>}
           </div>
-          <h1 className="text-[clamp(42px,5vw,64px)] font-bold leading-[1.03] tracking-[-0.065em] text-[#10131a]">{post.title}</h1>
+          <h1 className="text-[clamp(42px,5vw,64px)] font-bold leading-[1.03] tracking-[-0.065em] text-[#10131a]">
+            {post.heading}
+            {post.subtitle && <span className="mt-3 block text-[0.6em] font-semibold leading-[1.1] tracking-[-0.04em] text-[#98a2b3]">{post.subtitle}</span>}
+          </h1>
           <p className="mt-6 text-[17px] text-[#667085]">By <span className="font-semibold text-[#10131a]">{post.authors}</span></p>
           {post.hero && <img src={assetUrl(post, post.hero)} alt={post.heroAlt} className="mt-12 w-full rounded-[12px] border border-[#e7e8eb]" />}
           {toc.length > 0 && (
