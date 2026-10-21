@@ -7,6 +7,8 @@ authors: "Avi Basnet and SkyRL Team; Keith Truongcao and the Lila Sciences' AI R
 label: SkyRL + Lila Sciences
 layout: sidebar
 featured: true
+hero: hero.png
+heroAlt: "A 1M-token sequence fans out across 64 B200 GPUs, eight nodes of eight, and merges back into one training step"
 excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64x the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
 draft: true
 ---
