@@ -44,7 +44,7 @@ GLM-5.3-Flash is a hybrid attention model: 34 of its 45 layers use Kimi Delta At
 
 A lightweight *indexer* picks, for each query, which earlier tokens matter, and the attention reads only those 2048 tokens, so attention cost grows linearly. To make that choice, though, the indexer scores every query against every earlier pool of 4 tokens. The attention is sparse, but the indexer is dense, so the quadratic cost moves into the indexer rather than disappearing.
 
-![Inside a DSA layer: sparse attention, dense indexer](./dsa-indexer.png)
+![Inside a DSA layer: sparse attention, dense indexer](./dsa-indexer.svg)
 
 The next three sections each go after one hidden quadratic cost:
 
