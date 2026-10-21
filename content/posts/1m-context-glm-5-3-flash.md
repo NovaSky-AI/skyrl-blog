@@ -109,7 +109,7 @@ At 1M tokens, even with everything else in place, a single sequence's activation
 
 Megatron's Ulysses implementation exchanges the projected queries, keys, values, and gates, which are about 10× wider than the hidden state ([#2418](https://github.com/NovaSky-AI/SkyRL/pull/2418)). We gather the hidden state instead and have each GPU project only its own heads ([#2437](https://github.com/NovaSky-AI/SkyRL/pull/2437)). At CP2, this sends about 5x fewer bytes into each KDA layer, since the all-to-all only sends the heads that live on the other ranks. Communication is only part of the step, so the end-to-end gain is smaller: a 1M step went from 335 s to 307 s (−8%). Generally, we want to move the communication where the tensor is smallest. *(To learn more about how the different parallelism schemes interact with the KDA layer see the [Appendix](#appendix).)*
 
-![Context parallelism for KDA at CP2: all-to-all vs. all-gather](./kda-cp.png)
+![Context parallelism for KDA at CP2: all-to-all vs. all-gather](./kda-cp.svg)
 
 ### DSA: Gather by Token Position {#dsa-gather-by-token-position}
 
