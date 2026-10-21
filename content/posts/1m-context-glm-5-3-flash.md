@@ -2,7 +2,7 @@
 title: Scaling Training to 1M Token Context on GLM-5.3-Flash
 date: 2026-10-18
 tag: ENGINEERING
-authors: Avi Basnet and the SkyRL team, in collaboration with the AI Research Team at Lila Sciences
+authors: "Avi Basnet and SkyRL Team; Keith Truongcao and the Lila Sciences' AI Research Team"
 label: SkyRL + Lila Sciences
 excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64x the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer FP32 upcasts.
 draft: true
@@ -14,7 +14,7 @@ The model capabilities with the highest practical usefulness involve **long cont
 
 However, there are many engineering challenges with training models at that length of context. Memory grows with sequence length in every layer, and in attention it grows quadratically, so standard open source training frameworks run out of memory well before 1M tokens.
 
-In the latest version of SkyRL, the SkyRL team worked with the AI Research Team at Lila Sciences to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
+In the latest version of SkyRL, the SkyRL team worked with the AI Research Team at [Lila Sciences](https://www.lila.ai/) to enable key optimizations for GLM 5.3 Flash to train at **1M tokens per sequence**, which is 64x higher than the previous baseline.
 
 ![Peak memory at 1M tokens, adding one optimization at a time](./peak-memory-waterfall.png)
 
