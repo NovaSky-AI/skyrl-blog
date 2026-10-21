@@ -31,7 +31,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   return (
     <main className="min-h-screen bg-white text-[#10131a]">
       <header className="border-b border-[#e7e8eb]">
-        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-6 lg:px-0">
+        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-8 lg:px-10">
           <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em]">
             <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-[8px] bg-[#1769ff] text-white">
               <img src="https://github.com/NovaSky-AI.png" alt="NovaSky AI" className="h-full w-full object-cover" />
@@ -46,7 +46,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       </header>
       <article className="w-full bg-white pb-24 pt-16 sm:pt-20">
         <style>{`
-          .document-body { box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; color: #667085; background: #fff; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.75; }
+          .document-body { box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 0 32px 96px; color: #667085; background: #fff; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.75; }
           .document-body h2 { margin: 64px 0 20px; padding-top: 30px; color: #10131a; border-top: 1px solid #e7e8eb; font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -.045em; line-height: 1.12; scroll-margin-top: 24px; }
           .document-body h3 { margin: 38px 0 14px; color: #10131a; font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -.03em; line-height: 1.25; scroll-margin-top: 24px; }
           .document-body p { margin: 0 0 18px; }
@@ -65,10 +65,10 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body th, .document-body td { padding: 12px 16px; border-bottom: 1px solid #e7e8eb; text-align: left; vertical-align: top; }
           .document-body th { color: #10131a; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-bottom-color: #c4cbd6; }
           .document-body td:first-child { min-width: 170px; color: #10131a; }
-          @media (min-width: 1024px) { .document-body { padding-left: 0; padding-right: 0; } }
+          @media (min-width: 1024px) { .document-body { padding-left: 40px; padding-right: 40px; } }
           @media (max-width: 640px) { article { padding-top: 56px; } .document-body { font-size: 16px; } .document-body h2 { margin-top: 44px; padding-top: 22px; font-size: 28px; } }
         `}</style>
-        <div className="mx-auto mb-12 max-w-[1200px] px-6 lg:px-0">
+        <div className="mx-auto mb-12 max-w-[1200px] px-8 lg:px-10">
           <div className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.16em] text-[#1769ff]">
             <span>{post.tag}</span>
             <span className="h-1 w-1 rounded-full bg-[#c4cbd6]" />
