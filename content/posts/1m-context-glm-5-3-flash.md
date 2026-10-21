@@ -106,8 +106,8 @@ The catch is host RAM. It's shared with the optimizer, whose state we also keep 
 
 At 1M tokens, even with everything else in place, a single sequence's activations don't fit on one 8-GPU tensor-parallel group, so the sequence itself has to be split across GPUs. Because GLM-5.3-Flash is a hybrid, this took work on both layer types:
 
-- **DSA (sparse attention):** split the tokens and have each GPU gather the keys it needs from the others. Megatron already supports this, but it needed a fix for GLM's indexer.
 - **KDA (linear attention):** Megatron had no CP for KDA, so we implemented it. Splitting KDA by tokens would mean each GPU first needs the recurrent state from all earlier tokens. That's doable, using compact state summaries, but it costs an extra pass. We split heads instead, Ulysses-style: each GPU gets the full sequence for a subset of heads and runs KDA end to end, with no state passed between GPUs.
+- **DSA (sparse attention):** split the tokens and have each GPU gather the keys it needs from the others. Megatron already supports this, but it needed a fix for GLM's indexer.
 
 ### KDA: Communicate the Smallest Tensor {#kda-communicate-the-smallest-tensor}
 
