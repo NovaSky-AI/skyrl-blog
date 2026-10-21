@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, GitBranch } from 'lucide-react'
+import { ReplaySvgFigures } from '@/components/replay-svg-figures'
+import { TocSidebar } from '@/components/toc-sidebar'
 import { assetUrl, formatDate, getPost, getPosts, renderPost } from '@/lib/posts'
 
 export const dynamicParams = false
@@ -27,11 +29,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = getPost((await params).slug)
   if (!post) notFound()
   const { html, toc } = renderPost(post)
+  // On wide screens the contents move into a sticky sidebar that tracks the current section.
+  const sidebar = toc.length > 0
 
   return (
     <main className="min-h-screen bg-white text-[#10131a]">
       <header className="border-b border-[#e7e8eb]">
-        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-8 sm:px-16 lg:px-32">
+        <div className={`mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-8 sm:px-16 lg:px-32 ${sidebar ? 'xl:max-w-[1400px] xl:px-12' : ''}`}>
           <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em]">
             <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-[8px] bg-[#1769ff] text-white">
               <img src="https://github.com/NovaSky-AI.png" alt="NovaSky AI" className="h-full w-full object-cover" />
@@ -69,9 +73,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body td:first-child { min-width: 170px; color: #10131a; }
           @media (min-width: 640px) { .document-body { padding-left: 64px; padding-right: 64px; } }
           @media (min-width: 1024px) { .document-body { padding-left: 128px; padding-right: 128px; } }
+          @media (min-width: 1280px) { .with-sidebar .document-body { max-width: 860px; margin-left: 0; padding-left: 0; padding-right: 0; } }
           @media (max-width: 640px) { article { padding-top: 56px; } .document-body { font-size: 16px; } .document-body h2 { margin-top: 44px; padding-top: 22px; font-size: 28px; } }
         `}</style>
-        <div className="mx-auto mb-12 max-w-[1200px] px-8 sm:px-16 lg:px-32">
+        <div className={sidebar ? 'with-sidebar mx-auto xl:grid xl:max-w-[1400px] xl:grid-cols-[220px_minmax(0,1fr)] xl:gap-12 xl:px-12' : undefined}>
+        {sidebar && <aside className="hidden xl:block"><TocSidebar toc={toc} /></aside>}
+        <div className="min-w-0">
+        <div className={`mx-auto mb-12 max-w-[1200px] px-8 sm:px-16 lg:px-32 ${sidebar ? 'xl:max-w-none xl:px-0' : ''}`}>
           <div className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.16em] text-[#1769ff]">
             <span>{post.tag}</span>
             <span className="h-1 w-1 rounded-full bg-[#c4cbd6]" />
@@ -85,7 +93,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <p className="mt-6 text-[17px] text-[#667085]">By <span className="font-semibold text-[#10131a]">{post.authors}</span></p>
           {post.hero && <img src={assetUrl(post, post.hero)} alt={post.heroAlt} className="mt-12 w-full rounded-[12px] border border-[#e7e8eb]" />}
           {toc.length > 0 && (
-            <nav aria-labelledby="toc-heading" className="mt-12 rounded-[12px] border border-[#e7e8eb] bg-[#fafbfc] px-6 py-6 sm:px-8">
+            <nav aria-labelledby="toc-heading" className="mt-12 rounded-[12px] border border-[#e7e8eb] bg-[#fafbfc] px-6 py-6 sm:px-8 xl:hidden">
               <p id="toc-heading" className="mb-4 text-[11px] font-bold tracking-[0.16em] text-[#98a2b3]">CONTENTS</p>
               <ol className="gap-x-12 sm:columns-2">
                 {toc.map((entry, index) => (
@@ -108,6 +116,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           )}
         </div>
         <div className="document-body" dangerouslySetInnerHTML={{ __html: html }} />
+        <ReplaySvgFigures selector=".document-body" />
+        </div>
+        </div>
       </article>
     </main>
   )
