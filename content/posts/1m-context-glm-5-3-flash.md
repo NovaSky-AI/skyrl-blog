@@ -1,7 +1,7 @@
 ---
 title: Scaling Training to 1M Token Context
 subtitle: on GLM-5.3-Flash
-date: 2026-10-18
+date: 2026-10-22
 tag: ENGINEERING
 authors: "Avi Basnet and SkyRL Team; Keith Truongcao and the Lila Sciences' AI Research Team"
 label: SkyRL + Lila Sciences
@@ -10,7 +10,7 @@ featured: true
 hero: hero.png
 heroAlt: "Sparse attention: one query attends to a few dozen tokens scattered across a long context"
 excerpt: SkyRL now trains GLM-5.3-Flash at 1M tokens per sequence, 64× the previous baseline, through sparse attention fixes, activation recompute and offloading, context parallelism and fewer fp32 upcasts.
-draft: true
+draft: false
 ---
 
 ## Intro {#intro}
