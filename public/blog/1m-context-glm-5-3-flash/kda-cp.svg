@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1040" width="1000" height="1040" role="img" aria-label="Context parallelism for KDA at CP2. The all-to-all version exchanges the projections, about 10 times wider than the hidden state. The all-gather version exchanges the hidden state and each rank projects only its own heads, sending about 5 times fewer bytes across ranks.">
+<style>
+text { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.t { font-size: 25px; font-weight: 700; fill: #1b1b1b; }
+.sub { font-size: 13.5px; fill: #6f6f6f; }
+.pt { font-size: 16px; font-weight: 700; fill: #1b1b1b; }
+.ps { font-size: 12.5px; fill: #6f6f6f; }
+.rk { font-size: 13px; fill: #6f6f6f; }
+.b1 { font-size: 13px; }
+.xl { font-size: 12px; font-weight: 700; fill: #2f6fc6; }
+.ml { font-size: 13px; fill: #6f6f6f; }
+.mv { font-size: 14px; font-weight: 700; }
+.ct { font-size: 15px; font-weight: 700; fill: #1b1b1b; }
+.cs { font-size: 13.5px; fill: #1b1b1b; }
+
+@keyframes k1 { 0%, 25.000% { transform: scaleX(0); } 41.250%, 86.250% { transform: scaleX(1); } 93.750%, 100% { transform: scaleX(0); } }
+@keyframes k2 { 0%, 41.250% { opacity: 0; } 45.000%, 86.250% { opacity: 1; } 93.750%, 100% { opacity: 0; } }
+@keyframes k3 { 0%, 19.375% { stroke-opacity: 0; } 21.250% { stroke-opacity: 1; } 31.250%, 100% { stroke-opacity: 0; } }
+@keyframes k4 { 0%, 40.625% { stroke-opacity: 0; } 42.500% { stroke-opacity: 1; } 52.500%, 100% { stroke-opacity: 0; } }
+@keyframes k5 { 0%, 59.375% { stroke-opacity: 0; } 61.250% { stroke-opacity: 1; } 71.250%, 100% { stroke-opacity: 0; } }
+@keyframes k6 { 0%, 19.375% { stroke-opacity: 0; } 21.250% { stroke-opacity: 1; } 31.250%, 100% { stroke-opacity: 0; } }
+@keyframes k7 { 0%, 40.625% { stroke-opacity: 0; } 42.500% { stroke-opacity: 1; } 52.500%, 100% { stroke-opacity: 0; } }
+@keyframes k8 { 0%, 59.375% { stroke-opacity: 0; } 61.250% { stroke-opacity: 1; } 71.250%, 100% { stroke-opacity: 0; } }
+@keyframes k9 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, 0.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k10 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, 0.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k11 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, 0.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k12 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, 0.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k13 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, 120.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, 120.0px); } }
+@keyframes k14 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, -120.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, -120.0px); } }
+@keyframes k15 { 0%, 46.125% { opacity: 0; transform: translate(0px, 0px); } 46.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 60.000% { opacity: 1; transform: translate(60px, 0.0px); } 61.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k16 { 0%, 46.125% { opacity: 0; transform: translate(0px, 0px); } 46.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 60.000% { opacity: 1; transform: translate(60px, 0.0px); } 61.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k17 { 0%, 6.250% { transform: scaleX(0); } 20.000%, 86.250% { transform: scaleX(1); } 93.750%, 100% { transform: scaleX(0); } }
+@keyframes k18 { 0%, 20.000% { opacity: 0; } 23.750%, 86.250% { opacity: 1; } 93.750%, 100% { opacity: 0; } }
+@keyframes k19 { 0%, 19.375% { stroke-opacity: 0; } 21.250% { stroke-opacity: 1; } 31.250%, 100% { stroke-opacity: 0; } }
+@keyframes k20 { 0%, 40.625% { stroke-opacity: 0; } 42.500% { stroke-opacity: 1; } 52.500%, 100% { stroke-opacity: 0; } }
+@keyframes k21 { 0%, 59.375% { stroke-opacity: 0; } 61.250% { stroke-opacity: 1; } 71.250%, 100% { stroke-opacity: 0; } }
+@keyframes k22 { 0%, 19.375% { stroke-opacity: 0; } 21.250% { stroke-opacity: 1; } 31.250%, 100% { stroke-opacity: 0; } }
+@keyframes k23 { 0%, 40.625% { stroke-opacity: 0; } 42.500% { stroke-opacity: 1; } 52.500%, 100% { stroke-opacity: 0; } }
+@keyframes k24 { 0%, 59.375% { stroke-opacity: 0; } 61.250% { stroke-opacity: 1; } 71.250%, 100% { stroke-opacity: 0; } }
+@keyframes k25 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, 0.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k26 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, 0.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k27 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, 120.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, 120.0px); } }
+@keyframes k28 { 0%, 6.125% { opacity: 0; transform: translate(0px, 0px); } 6.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 20.000% { opacity: 1; transform: translate(60px, -120.0px); } 21.875%, 100% { opacity: 0; transform: translate(60px, -120.0px); } }
+@keyframes k29 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, 0.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k30 { 0%, 24.875% { opacity: 0; transform: translate(0px, 0px); } 25.000% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 41.250% { opacity: 1; transform: translate(60px, 0.0px); } 43.125%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k31 { 0%, 46.125% { opacity: 0; transform: translate(0px, 0px); } 46.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 60.000% { opacity: 1; transform: translate(60px, 0.0px); } 61.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@keyframes k32 { 0%, 46.125% { opacity: 0; transform: translate(0px, 0px); } 46.250% { opacity: 1; transform: translate(0px, 0px); animation-timing-function: ease-in-out; } 60.000% { opacity: 1; transform: translate(60px, 0.0px); } 61.875%, 100% { opacity: 0; transform: translate(60px, 0.0px); } }
+@media (prefers-reduced-motion: reduce) { .anim { animation: none !important; } .final { opacity: 1 !important; transform: none !important; } }</style>
+<rect width="1000" height="1040" fill="#fff"/>
+<text class="t" x="40" y="58">Context parallelism for KDA (CP2)</text>
+<text class="sub" x="40" y="92">Two ways to go from sequence shards to head shards before the KDA kernel.</text>
+<text class="sub" x="40" y="112">Both send outputs back to sequence order with one all-to-all afterwards.</text>
+<text class="pt" x="40" y="175">All-to-all (#2418)</text>
+<text class="ps" x="40" y="199">Exchange the projections, about 10× wider than the hidden state.</text>
+<text class="ml" x="40" y="483">bytes sent across ranks</text>
+<rect x="340" y="473" width="560" height="12" rx="6" fill="#eeeeeb"/>
+<rect class="anim final" x="340" y="473" width="560.0" height="12" rx="6" fill="#2f6fc6" style="transform-origin: 340px 473px; animation: k1 8.0s linear infinite; transform: scaleX(0);"/>
+<text class="mv anim final" x="910.0" y="484" style="fill:#2f6fc6; animation: k2 8.0s linear infinite; opacity: 0;">~5×</text>
+<text class="rk" x="40" y="267.0">rank 0</text>
+<rect x="110" y="235" width="150" height="54" rx="7" fill="#dde7f5"/>
+<text class="b1" x="185.0" y="258" text-anchor="middle" style="fill:#1b1b1b">seq half 1</text>
+<text class="b1" x="185.0" y="275" text-anchor="middle" style="fill:#1b1b1b">hidden</text>
+<rect x="340" y="235" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="336" y="231" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k3 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="415.0" y="258" text-anchor="middle" style="fill:#1b1b1b">project all</text>
+<text class="b1" x="415.0" y="275" text-anchor="middle" style="fill:#1b1b1b">q,k,v,f,g,β</text>
+<rect x="570" y="235" width="150" height="54" rx="7" fill="#2f6fc6"/>
+<rect class="anim" x="566" y="231" width="158" height="62" rx="10" fill="none" stroke="#2f6fc6" stroke-width="2.2" style="animation: k4 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="645.0" y="258" text-anchor="middle" style="fill:#fff">full seq</text>
+<text class="b1" x="645.0" y="275" text-anchor="middle" style="fill:#fff">head half 1</text>
+<rect x="800" y="235" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="796" y="231" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k5 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="875.0" y="258" text-anchor="middle" style="fill:#1b1b1b">KDA</text>
+<text class="b1" x="875.0" y="275" text-anchor="middle" style="fill:#1b1b1b">kernel</text>
+<text class="rk" x="40" y="407.0">rank 1</text>
+<rect x="110" y="375" width="150" height="54" rx="7" fill="#dde7f5"/>
+<text class="b1" x="185.0" y="398" text-anchor="middle" style="fill:#1b1b1b">seq half 2</text>
+<text class="b1" x="185.0" y="415" text-anchor="middle" style="fill:#1b1b1b">hidden</text>
+<rect x="340" y="375" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="336" y="371" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k6 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="415.0" y="398" text-anchor="middle" style="fill:#1b1b1b">project all</text>
+<text class="b1" x="415.0" y="415" text-anchor="middle" style="fill:#1b1b1b">q,k,v,f,g,β</text>
+<rect x="570" y="375" width="150" height="54" rx="7" fill="#2f6fc6"/>
+<rect class="anim" x="566" y="371" width="158" height="62" rx="10" fill="none" stroke="#2f6fc6" stroke-width="2.2" style="animation: k7 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="645.0" y="398" text-anchor="middle" style="fill:#fff">full seq</text>
+<text class="b1" x="645.0" y="415" text-anchor="middle" style="fill:#fff">head half 2</text>
+<rect x="800" y="375" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="796" y="371" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k8 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="875.0" y="398" text-anchor="middle" style="fill:#1b1b1b">KDA</text>
+<text class="b1" x="875.0" y="415" text-anchor="middle" style="fill:#1b1b1b">kernel</text>
+<line x1="262" y1="262.0" x2="330.0" y2="262.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M330.0 258.0 L338 262.0 L330.0 266.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="263.0" y="258.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k9 8.0s linear infinite; opacity: 0;"/>
+<line x1="262" y1="402.0" x2="330.0" y2="402.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M330.0 398.0 L338 402.0 L330.0 406.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="263.0" y="398.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k10 8.0s linear infinite; opacity: 0;"/>
+<line x1="492" y1="262.0" x2="560.0" y2="262.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M560.0 258.0 L568 262.0 L560.0 266.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="493.0" y="242.0" width="14" height="40" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k11 8.0s linear infinite; opacity: 0;"/>
+<line x1="492" y1="402.0" x2="560.0" y2="402.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M560.0 398.0 L568 402.0 L560.0 406.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="493.0" y="382.0" width="14" height="40" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k12 8.0s linear infinite; opacity: 0;"/>
+<line x1="492" y1="268.0" x2="563.9156899667565" y2="389.1211620492741" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M567.3551089421195 387.0790070326524 L568 396.0 L560.4762709913936 391.16331706589585 Z" fill="#8a8a8a"/>
+<line x1="492" y1="396.0" x2="563.9156899667565" y2="274.8788379507259" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M560.4762709913936 272.83668293410415 L568 268.0 L567.3551089421195 276.9209929673476 Z" fill="#8a8a8a"/>
+<rect class="anim" x="493.0" y="252.0" width="14" height="40" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k13 8.0s linear infinite; opacity: 0;"/>
+<rect class="anim" x="493.0" y="372.0" width="14" height="40" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k14 8.0s linear infinite; opacity: 0;"/>
+<rect x="484.0" y="321.0" width="92" height="20" rx="4" fill="#fff"/>
+<text class="xl" x="530.0" y="336.0" text-anchor="middle">all-to-all</text>
+<line x1="722" y1="262.0" x2="790.0" y2="262.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M790.0 258.0 L798 262.0 L790.0 266.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="723.0" y="252.0" width="14" height="20" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k15 8.0s linear infinite; opacity: 0;"/>
+<line x1="722" y1="402.0" x2="790.0" y2="402.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M790.0 398.0 L798 402.0 L790.0 406.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="723.0" y="392.0" width="14" height="20" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k16 8.0s linear infinite; opacity: 0;"/>
+<line x1="40" y1="528" x2="960" y2="528" stroke="#e7e7e3" stroke-width="1"/>
+<text class="pt" x="40" y="580">All-gather (#2437)</text>
+<text class="ps" x="40" y="604">Exchange the 4,096-wide hidden state; each rank projects only its own heads.</text>
+<text class="ml" x="40" y="888">bytes sent across ranks</text>
+<rect x="340" y="878" width="560" height="12" rx="6" fill="#eeeeeb"/>
+<rect class="anim final" x="340" y="878" width="112.0" height="12" rx="6" fill="#2f6fc6" style="transform-origin: 340px 878px; animation: k17 8.0s linear infinite; transform: scaleX(0);"/>
+<text class="mv anim final" x="462.0" y="889" style="fill:#2f6fc6; animation: k18 8.0s linear infinite; opacity: 0;">1×</text>
+<text class="rk" x="40" y="672.0">rank 0</text>
+<rect x="110" y="640" width="150" height="54" rx="7" fill="#dde7f5"/>
+<text class="b1" x="185.0" y="663" text-anchor="middle" style="fill:#1b1b1b">seq half 1</text>
+<text class="b1" x="185.0" y="680" text-anchor="middle" style="fill:#1b1b1b">hidden</text>
+<rect x="340" y="640" width="150" height="54" rx="7" fill="#2f6fc6"/>
+<rect class="anim" x="336" y="636" width="158" height="62" rx="10" fill="none" stroke="#2f6fc6" stroke-width="2.2" style="animation: k19 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="415.0" y="663" text-anchor="middle" style="fill:#fff">full seq</text>
+<text class="b1" x="415.0" y="680" text-anchor="middle" style="fill:#fff">hidden</text>
+<rect x="570" y="640" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="566" y="636" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k20 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="645.0" y="663" text-anchor="middle" style="fill:#1b1b1b">project only</text>
+<text class="b1" x="645.0" y="680" text-anchor="middle" style="fill:#1b1b1b">head half 1</text>
+<rect x="800" y="640" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="796" y="636" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k21 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="875.0" y="663" text-anchor="middle" style="fill:#1b1b1b">KDA</text>
+<text class="b1" x="875.0" y="680" text-anchor="middle" style="fill:#1b1b1b">kernel</text>
+<text class="rk" x="40" y="812.0">rank 1</text>
+<rect x="110" y="780" width="150" height="54" rx="7" fill="#dde7f5"/>
+<text class="b1" x="185.0" y="803" text-anchor="middle" style="fill:#1b1b1b">seq half 2</text>
+<text class="b1" x="185.0" y="820" text-anchor="middle" style="fill:#1b1b1b">hidden</text>
+<rect x="340" y="780" width="150" height="54" rx="7" fill="#2f6fc6"/>
+<rect class="anim" x="336" y="776" width="158" height="62" rx="10" fill="none" stroke="#2f6fc6" stroke-width="2.2" style="animation: k22 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="415.0" y="803" text-anchor="middle" style="fill:#fff">full seq</text>
+<text class="b1" x="415.0" y="820" text-anchor="middle" style="fill:#fff">hidden</text>
+<rect x="570" y="780" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="566" y="776" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k23 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="645.0" y="803" text-anchor="middle" style="fill:#1b1b1b">project only</text>
+<text class="b1" x="645.0" y="820" text-anchor="middle" style="fill:#1b1b1b">head half 2</text>
+<rect x="800" y="780" width="150" height="54" rx="7" fill="#ece9e3"/>
+<rect class="anim" x="796" y="776" width="158" height="62" rx="10" fill="none" stroke="#d08a2e" stroke-width="2.2" style="animation: k24 8.0s linear infinite; stroke-opacity: 0;"/>
+<text class="b1" x="875.0" y="803" text-anchor="middle" style="fill:#1b1b1b">KDA</text>
+<text class="b1" x="875.0" y="820" text-anchor="middle" style="fill:#1b1b1b">kernel</text>
+<line x1="262" y1="667.0" x2="330.0" y2="667.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M330.0 663.0 L338 667.0 L330.0 671.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="263.0" y="663.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k25 8.0s linear infinite; opacity: 0;"/>
+<line x1="262" y1="807.0" x2="330.0" y2="807.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M330.0 803.0 L338 807.0 L330.0 811.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="263.0" y="803.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k26 8.0s linear infinite; opacity: 0;"/>
+<line x1="262" y1="673.0" x2="333.91568996675653" y2="794.1211620492742" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M337.35510894211944 792.0790070326524 L338 801.0 L330.4762709913936 796.163317065896 Z" fill="#8a8a8a"/>
+<line x1="262" y1="801.0" x2="333.91568996675653" y2="679.8788379507258" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M330.4762709913936 677.836682934104 L338 673.0 L337.35510894211944 681.9209929673476 Z" fill="#8a8a8a"/>
+<rect class="anim" x="263.0" y="673.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k27 8.0s linear infinite; opacity: 0;"/>
+<rect class="anim" x="263.0" y="793.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k28 8.0s linear infinite; opacity: 0;"/>
+<rect x="254.0" y="726.0" width="92" height="20" rx="4" fill="#fff"/>
+<text class="xl" x="300.0" y="741.0" text-anchor="middle">all-gather</text>
+<line x1="492" y1="667.0" x2="560.0" y2="667.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M560.0 663.0 L568 667.0 L560.0 671.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="493.0" y="663.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k29 8.0s linear infinite; opacity: 0;"/>
+<line x1="492" y1="807.0" x2="560.0" y2="807.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M560.0 803.0 L568 807.0 L560.0 811.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="493.0" y="803.0" width="14" height="8" rx="2" fill="#2f6fc6" stroke="#fff" stroke-width="1.2" style="animation: k30 8.0s linear infinite; opacity: 0;"/>
+<line x1="722" y1="667.0" x2="790.0" y2="667.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M790.0 663.0 L798 667.0 L790.0 671.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="723.0" y="657.0" width="14" height="20" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k31 8.0s linear infinite; opacity: 0;"/>
+<line x1="722" y1="807.0" x2="790.0" y2="807.0" stroke="#8a8a8a" stroke-width="1.6"/>
+<path d="M790.0 803.0 L798 807.0 L790.0 811.0 Z" fill="#8a8a8a"/>
+<rect class="anim" x="723.0" y="797.0" width="14" height="20" rx="2" fill="#d08a2e" stroke="#fff" stroke-width="1.2" style="animation: k32 8.0s linear infinite; opacity: 0;"/>
+<rect x="40" y="954" width="4" height="52" fill="#2f6fc6"/>
+<text class="ct" x="60" y="974">All-gather sends ~5× fewer bytes into each KDA layer at CP2</text>
+<text class="cs" x="60" y="998">1M step: 335 s → 307 s (−8%), faster over both TCP and EFA</text>
+</svg>

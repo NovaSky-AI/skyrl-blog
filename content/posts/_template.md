@@ -2,6 +2,8 @@
 # Copy this file to content/posts/<your-slug>.md. The file name is the URL: /blog/<your-slug>.
 # Files starting with "_" are ignored by the site.
 title: Your post title
+# subtitle: Optional smaller grey line under the title; listings show "title subtitle"
+# layout: sidebar # optional: wider margins, image captions and a sticky contents sidebar
 date: 2026-01-31 # YYYY-MM-DD; the homepage sorts by this
 tag: ENGINEERING # RELEASE, RESEARCH, ENGINEERING or CASE STUDY
 authors: Your Name and the SkyRL team

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, GitBranch } from 'lucide-react'
+import { ReplaySvgFigures } from '@/components/replay-svg-figures'
+import { TocSidebar } from '@/components/toc-sidebar'
 import { assetUrl, formatDate, getPost, getPosts, renderPost } from '@/lib/posts'
 
 export const dynamicParams = false
@@ -27,11 +29,15 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = getPost((await params).slug)
   if (!post) notFound()
   const { html, toc } = renderPost(post)
+  // `layout: sidebar` posts get wider side padding, image captions, and on wide screens a sticky contents
+  // sidebar that tracks the current section. Other posts keep the default layout.
+  const custom = post.layout === 'sidebar'
+  const sidebar = custom && toc.length > 0
 
   return (
     <main className="min-h-screen bg-white text-[#10131a]">
       <header className="border-b border-[#e7e8eb]">
-        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-6 lg:px-0">
+        <div className={`mx-auto flex h-[72px] max-w-[1200px] items-center justify-between ${custom ? 'px-8 sm:px-16 lg:px-32' : 'px-6 lg:px-0'} ${sidebar ? 'xl:max-w-[1400px] xl:px-12' : ''}`}>
           <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-[-0.04em]">
             <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-[8px] bg-[#1769ff] text-white">
               <img src="https://github.com/NovaSky-AI.png" alt="NovaSky AI" className="h-full w-full object-cover" />
@@ -49,6 +55,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body { box-sizing: border-box; max-width: 1200px; margin: 0 auto; padding: 0 24px 96px; color: #667085; background: #fff; font-family: Arial, sans-serif; font-size: 17px; line-height: 1.75; }
           .document-body h2 { margin: 64px 0 20px; padding-top: 30px; color: #10131a; border-top: 1px solid #e7e8eb; font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -.045em; line-height: 1.12; scroll-margin-top: 24px; }
           .document-body h3 { margin: 38px 0 14px; color: #10131a; font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -.03em; line-height: 1.25; scroll-margin-top: 24px; }
+          .document-body h4 { margin: 30px 0 12px; color: #10131a; font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; line-height: 1.4; scroll-margin-top: 24px; }
           .document-body p { margin: 0 0 18px; }
           .document-body strong { color: #10131a; }
           .document-body ul, .document-body ol { margin: 0 0 22px; padding-left: 26px; list-style: disc; }
@@ -57,6 +64,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body a { color: #1769ff; text-decoration-line: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
           .document-body a:hover { color: #0b4dcc; }
           .document-body img { display: block; max-width: 100%; height: auto; margin: 38px auto; border: 1px solid #e7e8eb; border-radius: 12px; }
+          .layout-sidebar .document-body p:has(> img) + p:has(> em:only-child) { max-width: 760px; margin: -20px auto 40px; color: #98a2b3; font-size: 14px; line-height: 1.6; text-align: center; }
+          .layout-sidebar .document-body p:has(> img) + p:has(> em:only-child) em { font-style: normal; }
           .document-body pre { overflow-x: auto; margin: 28px 0; padding: 22px; border: 1px solid #e7e8eb; border-radius: 12px; background: #f8f9fb; color: #202124; font: 14px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
           .document-body code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
           .document-body :not(pre) > code { padding: 2px 5px; border-radius: 4px; background: #f2f4f7; color: #344054; font-size: .92em; }
@@ -66,20 +75,30 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           .document-body th { color: #10131a; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-bottom-color: #c4cbd6; }
           .document-body td:first-child { min-width: 170px; color: #10131a; }
           @media (min-width: 1024px) { .document-body { padding-left: 0; padding-right: 0; } }
+          .layout-sidebar .document-body { padding-left: 32px; padding-right: 32px; }
+          @media (min-width: 640px) { .layout-sidebar .document-body { padding-left: 64px; padding-right: 64px; } }
+          @media (min-width: 1024px) { .layout-sidebar .document-body { padding-left: 128px; padding-right: 128px; } }
+          @media (min-width: 1280px) { .layout-sidebar.with-sidebar .document-body { max-width: 860px; margin-left: 0; padding-left: 0; padding-right: 0; } }
           @media (max-width: 640px) { article { padding-top: 56px; } .document-body { font-size: 16px; } .document-body h2 { margin-top: 44px; padding-top: 22px; font-size: 28px; } }
         `}</style>
-        <div className="mx-auto mb-12 max-w-[1200px] px-6 lg:px-0">
+        <div className={custom ? `layout-sidebar ${sidebar ? 'with-sidebar mx-auto xl:grid xl:max-w-[1400px] xl:grid-cols-[220px_minmax(0,1fr)] xl:gap-12 xl:px-12' : ''}` : undefined}>
+        {sidebar && <aside className="hidden xl:block"><TocSidebar toc={toc} /></aside>}
+        <div className="min-w-0">
+        <div className={`mx-auto mb-12 max-w-[1200px] ${custom ? 'px-8 sm:px-16 lg:px-32' : 'px-6 lg:px-0'} ${sidebar ? 'xl:max-w-none xl:px-0' : ''}`}>
           <div className="mb-8 flex items-center gap-3 text-[11px] font-bold tracking-[0.16em] text-[#1769ff]">
             <span>{post.tag}</span>
             <span className="h-1 w-1 rounded-full bg-[#c4cbd6]" />
             <time dateTime={post.date} className="font-normal tracking-normal text-[#8a93a2]">{formatDate(post.date)}</time>
             {post.draft && <span className="rounded bg-[#fff4e5] px-2 py-0.5 tracking-normal text-[#b54708]">DRAFT</span>}
           </div>
-          <h1 className="text-[clamp(42px,5vw,64px)] font-bold leading-[1.03] tracking-[-0.065em] text-[#10131a]">{post.title}</h1>
+          <h1 className="text-[clamp(42px,5vw,64px)] font-bold leading-[1.03] tracking-[-0.065em] text-[#10131a]">
+            {post.heading}
+            {post.subtitle && <span className="mt-3 block text-[0.6em] font-semibold leading-[1.1] tracking-[-0.04em] text-[#98a2b3]">{post.subtitle}</span>}
+          </h1>
           <p className="mt-6 text-[17px] text-[#667085]">By <span className="font-semibold text-[#10131a]">{post.authors}</span></p>
           {post.hero && <img src={assetUrl(post, post.hero)} alt={post.heroAlt} className="mt-12 w-full rounded-[12px] border border-[#e7e8eb]" />}
           {toc.length > 0 && (
-            <nav aria-labelledby="toc-heading" className="mt-12 rounded-[12px] border border-[#e7e8eb] bg-[#fafbfc] px-6 py-6 sm:px-8">
+            <nav aria-labelledby="toc-heading" className={`mt-12 rounded-[12px] border border-[#e7e8eb] bg-[#fafbfc] px-6 py-6 sm:px-8 ${sidebar ? 'xl:hidden' : ''}`}>
               <p id="toc-heading" className="mb-4 text-[11px] font-bold tracking-[0.16em] text-[#98a2b3]">CONTENTS</p>
               <ol className="gap-x-12 sm:columns-2">
                 {toc.map((entry, index) => (
@@ -102,6 +121,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           )}
         </div>
         <div className="document-body" dangerouslySetInnerHTML={{ __html: html }} />
+        <ReplaySvgFigures selector=".document-body" />
+        </div>
+        </div>
       </article>
     </main>
   )
