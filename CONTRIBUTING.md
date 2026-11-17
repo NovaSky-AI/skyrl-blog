@@ -61,7 +61,4 @@ the post is ready to publish, set `draft: false` (or remove the line). Merging i
 ## Linking to a post hosted elsewhere
 
 To list a post that lives on another site, add an entry to [`content/external-posts.json`](content/external-posts.json)
-with `title`, `date`, `tag`, `label`, `excerpt` and `href`. It appears on the homepage and links out. Pages in this
-repo that aren't Markdown posts (such as the release posts rendered from Google Docs HTML, `/blog/skyrl-v0-5-0`) are
-listed the same way. An entry can also set `featured: true`, plus an optional `hero` image path (e.g.
-`/blog/<slug>/hero.png`) and `heroAlt`, to compete for the homepage's featured card with Markdown posts.
+with `title`, `date`, `tag`, `label`, `excerpt` and `href`. It appears on the homepage and links out.
