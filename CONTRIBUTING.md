@@ -50,6 +50,9 @@ that the production build passes:
 pnpm build
 ```
 
+`pnpm install` also installs a git pre-commit hook (in `.githooks/`) that runs `pnpm typecheck` whenever a commit
+touches TypeScript, JavaScript, `package.json` or `tsconfig.json`. Commits that only change posts and images skip it.
+
 ## 3. Open a pull request
 
 Commit the post and its images and open a pull request against `main`. The pull request runs the same build. When

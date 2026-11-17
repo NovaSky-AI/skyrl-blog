@@ -1,0 +1,20 @@
+#!/bin/sh
+# Type-checks the site before a commit. Installed by `pnpm install` (the `prepare` script sets core.hooksPath).
+# Skip once with `git commit --no-verify`.
+
+# Only run when the commit touches code or config; post-only commits (Markdown, images, HTML) skip it.
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '\.(ts|tsx|mjs|js)$|(^|/)(package\.json|tsconfig\.json)$'; then
+  exit 0
+fi
+
+tsc=node_modules/.bin/tsc
+if [ ! -x "$tsc" ]; then
+  echo "pre-commit: $tsc not found; run 'pnpm install' first (or commit with --no-verify)." >&2
+  exit 1
+fi
+
+echo "pre-commit: type-checking..."
+if ! "$tsc" --noEmit; then
+  echo "pre-commit: TypeScript errors above; fix them or commit with --no-verify." >&2
+  exit 1
+fi
