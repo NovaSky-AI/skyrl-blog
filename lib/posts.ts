@@ -18,6 +18,10 @@ export type PostSummary = {
   excerpt: string
   href: string
   external: boolean
+  /** Candidate for the homepage's featured card; the newest featured post wins. */
+  featured: boolean
+  heroUrl?: string
+  heroAlt: string
 }
 
 export type Post = PostSummary & {
@@ -29,8 +33,6 @@ export type Post = PostSummary & {
   layout: 'default' | 'sidebar'
   authors: string
   hero?: string
-  heroAlt: string
-  featured: boolean
   draft: boolean
   markdown: string
 }
@@ -119,17 +121,38 @@ export function getAllPostSummaries(): PostSummary[] {
         excerpt: requireString(entry, 'excerpt', where),
         href: requireString(entry, 'href', where),
         external: !String(entry.href).startsWith('/'),
+        featured: entry.featured === true,
+        heroUrl: typeof entry.hero === 'string' ? entry.hero : undefined,
+        heroAlt: typeof entry.heroAlt === 'string' ? entry.heroAlt : requireString(entry, 'title', where),
       }
     },
   )
-  const local = getPosts().map(({ title, date, tag, label, excerpt, href, external }) => ({ title, date, tag, label, excerpt, href, external }))
+  const local = getPosts().map(toSummary)
   return [...local, ...external].sort((a, b) => b.date.localeCompare(a.date))
 }
 
-/** The newest markdown post marked `featured: true`, else the newest markdown post. */
-export function getFeaturedPost(): Post | undefined {
-  const posts = getPosts()
-  return posts.find((post) => post.featured) ?? posts[0]
+const toSummary = (post: Post): PostSummary => ({
+  title: post.title,
+  date: post.date,
+  tag: post.tag,
+  label: post.label,
+  excerpt: post.excerpt,
+  href: post.href,
+  external: post.external,
+  featured: post.featured,
+  heroUrl: post.hero ? assetUrl(post, post.hero) : undefined,
+  heroAlt: post.heroAlt,
+})
+
+/**
+ * The newest post marked `featured: true`, from markdown posts and content/external-posts.json alike,
+ * else the newest markdown post.
+ */
+export function getFeaturedPost(): PostSummary | undefined {
+  const featured = getAllPostSummaries().find((post) => post.featured)
+  if (featured) return featured
+  const newest = getPosts()[0]
+  return newest && toSummary(newest)
 }
 
 const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
