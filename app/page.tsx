@@ -1,5 +1,5 @@
 import Home from '@/components/home'
-import { assetUrl, formatDate, getAllPostSummaries, getFeaturedPost } from '@/lib/posts'
+import { formatDate, getAllPostSummaries, getFeaturedPost } from '@/lib/posts'
 
 export default function Page() {
   const post = getFeaturedPost()
@@ -10,7 +10,7 @@ export default function Page() {
     tag: post.tag,
     label: post.label,
     month: formatDate(post.date, 'month'),
-    heroUrl: post.hero ? assetUrl(post, post.hero) : undefined,
+    heroUrl: post.heroUrl,
     heroAlt: post.heroAlt,
   }
   return <Home posts={getAllPostSummaries()} featured={featured} />

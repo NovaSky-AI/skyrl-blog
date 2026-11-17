@@ -8,6 +8,17 @@
     "href": "https://mercor.com/blog/training-frontier-knowledge-work-agents-a-397b-rl-training-guide-with-skyrl"
   },
   {
+    "title": "SkyRL v0.5.0: Large scale RL on diverse models",
+    "date": "2026-11-17",
+    "tag": "RELEASE",
+    "label": "SkyRL v0.5.0",
+    "excerpt": "Support for Beam, DeepSeek-V4.1-Flash, Qwen3.8-Flash-Next and Le Chonk, score centering for stable 4-bit rollouts, 1M-token context, optimizer offload to disk, a native on-policy distillation trainer and better VLM training.",
+    "href": "/blog/skyrl-v0-5-0",
+    "featured": true,
+    "hero": "/blog/skyrl-v0-5-0/hero.png",
+    "heroAlt": "SkyRL v0.5.0 release highlights"
+  },
+  {
     "title": "SkyRL v0.4.0: Improving SkyRL for large scale post-training",
     "date": "2026-10-06",
     "tag": "RELEASE",
