@@ -12,7 +12,7 @@
     "date": "2026-11-17",
     "tag": "RELEASE",
     "label": "SkyRL v0.5.0",
-    "excerpt": "Support for Beam, DeepSeek-V4.1-Flash, Qwen3.8-Flash-Next and Le Chonk, score centering for stable 4-bit rollouts, 1M-token context, optimizer offload to disk, a native on-policy distillation trainer and better VLM training.",
+    "excerpt": "Support for Beam, DeepSeek-V4.1-Flash and Qwen3.8-Flash-Next, score centering for stable 4-bit rollouts, 1M-token context, optimizer offload to disk, a native on-policy distillation trainer and better VLM training.",
     "href": "/blog/skyrl-v0-5-0",
     "featured": true,
     "hero": "/blog/skyrl-v0-5-0/hero.png",
